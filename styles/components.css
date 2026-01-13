@@ -1,0 +1,248 @@
+/* ==============================================
+   COMPONENT STYLES
+   Premium glassmorphism & effects
+   ============================================== */
+
+/* ============================================
+   GLASSMORPHISM CARDS
+   ============================================ */
+
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    inset 0 1px 1px var(--glass-highlight),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.1),
+    0 8px 32px var(--depth-shadow);
+}
+
+.glass-card-hover {
+  transition: border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: var(--glass-border-hover);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  box-shadow: 
+    inset 0 1px 1px var(--glass-highlight-strong),
+    0 0 40px var(--glow-cyan-subtle),
+    0 12px 40px var(--depth-shadow-strong);
+  transform: translateY(-2px);
+}
+
+/* Card glow effect */
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--glow-cyan-subtle) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* ============================================
+   GLOW EFFECTS
+   ============================================ */
+
+.glow-sm { box-shadow: 0 0 20px var(--glow-cyan-subtle); }
+.glow-md { box-shadow: 0 0 40px var(--glow-cyan-subtle); }
+.glow-lg { 
+  box-shadow: 
+    0 0 60px var(--glow-cyan-subtle), 
+    0 0 100px rgba(0, 212, 255, 0.1); 
+}
+
+.text-glow { 
+  text-shadow: 0 0 30px var(--glow-cyan); 
+}
+
+.text-glow-strong {
+  text-shadow: 
+    0 0 20px var(--glow-cyan),
+    0 0 40px var(--glow-cyan-subtle);
+}
+
+/* Button glow */
+.btn-glow {
+  box-shadow: 0 0 20px var(--glow-cyan-subtle);
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 
+    0 0 30px var(--glow-cyan),
+    0 0 60px var(--glow-cyan-subtle);
+}
+
+/* ============================================
+   GRADIENT TEXT
+   ============================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-cyan), var(--brand-cyan-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-purple {
+  background: linear-gradient(135deg, var(--brand-purple), var(--brand-purple-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-animated {
+  background: linear-gradient(90deg, 
+    var(--brand-cyan), 
+    var(--brand-cyan-light), 
+    var(--brand-purple-light),
+    var(--brand-cyan)
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.gradient-text-white {
+  background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   SPOTLIGHT EFFECT
+   ============================================ */
+
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--glow-cyan-subtle) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+  left: var(--spotlight-x, 50%);
+  top: var(--spotlight-y, 50%);
+}
+
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+/* ============================================
+   BORDERS & DIVIDERS
+   ============================================ */
+
+.border-gradient {
+  border: 1px solid transparent;
+  background: 
+    linear-gradient(var(--brand-obsidian), var(--brand-obsidian)) padding-box,
+    linear-gradient(135deg, var(--brand-cyan), var(--brand-purple)) border-box;
+}
+
+.divider-glow {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--glow-cyan-subtle), 
+    transparent
+  );
+}
+
+/* ============================================
+   AURORA ORBS
+   ============================================ */
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: aurora-orb-pulse 8s ease-in-out infinite;
+}
+
+.aurora-orb-cyan {
+  background: radial-gradient(circle, var(--glow-cyan-subtle) 0%, transparent 70%);
+}
+
+.aurora-orb-purple {
+  background: radial-gradient(circle, var(--glow-purple-subtle) 0%, transparent 70%);
+}
+
+/* ============================================
+   SKELETON LOADING
+   ============================================ */
+
+.skeleton {
+  background: linear-gradient(90deg, 
+    var(--muted) 0%, 
+    rgba(255, 255, 255, 0.06) 50%, 
+    var(--muted) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================
+   MOBILE FALLBACKS
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  .glass-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: linear-gradient(135deg, 
+      rgba(22, 27, 34, 0.98), 
+      rgba(13, 17, 23, 0.98)
+    ) !important;
+  }
+  
+  .glass-card-hover:hover {
+    transform: none;
+  }
+  
+  .aurora-orb {
+    filter: blur(60px) !important;
+    animation: none !important;
+    opacity: 0.3;
+  }
+}

@@ -1,0 +1,244 @@
+/* ==============================================
+   ANIMATION KEYFRAMES & CLASSES
+   Premium motion design system
+   ============================================== */
+
+/* ============================================
+   CORE KEYFRAMES
+   ============================================ */
+
+/* Shimmer - Loading & shine effects */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Float - Gentle hovering motion */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Pulse Glow - Breathing light effect */
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px var(--glow-cyan-subtle);
+    opacity: 0.8;
+  }
+  50% { 
+    box-shadow: 0 0 40px var(--glow-cyan), 0 0 60px var(--glow-purple-subtle);
+    opacity: 1;
+  }
+}
+
+/* Gradient Shift - Text gradient animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Aurora Shift - Background orbs */
+@keyframes aurora-shift {
+  0%, 100% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 100% 50%; filter: hue-rotate(30deg); }
+}
+
+/* Aurora Orb Pulse */
+@keyframes aurora-orb-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* Slide Up */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scale In */
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Blur Reveal */
+@keyframes blur-reveal {
+  0% { opacity: 0; filter: blur(10px); transform: translateY(8px); }
+  100% { opacity: 1; filter: blur(0px); transform: translateY(0); }
+}
+
+/* Card Enter */
+@keyframes card-enter {
+  0% { opacity: 0; transform: translateY(24px) scale(0.98); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Typing cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Scan line effect */
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Rotate slow */
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Ping */
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+/* Counter tick */
+@keyframes counter-tick {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.02); }
+}
+
+/* ============================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ============================================ */
+
+.animate-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-in.animating {
+  will-change: transform, opacity;
+}
+
+.animate-in.animation-complete {
+  will-change: auto;
+}
+
+.animate-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scale variant */
+.animate-in-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-in-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Blur variant */
+.animate-in-blur {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(16px);
+  transition: opacity 0.7s ease-out,
+              filter 0.7s ease-out,
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-in-blur.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* ============================================
+   STAGGER DELAYS
+   ============================================ */
+
+.stagger-1 { transition-delay: 100ms; }
+.stagger-2 { transition-delay: 200ms; }
+.stagger-3 { transition-delay: 300ms; }
+.stagger-4 { transition-delay: 400ms; }
+.stagger-5 { transition-delay: 500ms; }
+.stagger-6 { transition-delay: 600ms; }
+.stagger-7 { transition-delay: 700ms; }
+.stagger-8 { transition-delay: 800ms; }
+
+/* ============================================
+   UTILITY ANIMATION CLASSES
+   ============================================ */
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 300% 100%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.animate-ping {
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-shimmer,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-gradient,
+  .animate-rotate-slow {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   MOBILE PERFORMANCE
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  .animate-in {
+    transition-duration: 0.5s;
+    transform: translateY(20px);
+  }
+  
+  .animate-float {
+    animation: none !important;
+  }
+  
+  .animate-rotate-slow {
+    animation-duration: 40s !important;
+  }
+}

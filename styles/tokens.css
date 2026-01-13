@@ -1,0 +1,84 @@
+/* ==============================================
+   CTO RESUME - DESIGN TOKENS
+   Premium dark theme with cyan/electric accents
+   ============================================== */
+
+:root {
+  /* ============================================
+     PRIMARY BRAND COLORS
+     Deep Space Navy + Electric Cyan
+     ============================================ */
+  --brand-void: #0a0a0f;           /* Deepest black */
+  --brand-obsidian: #0d1117;       /* Primary background */
+  --brand-carbon: #161b22;         /* Card backgrounds */
+  --brand-slate: #21262d;          /* Elevated surfaces */
+  
+  /* Accent Colors */
+  --brand-cyan: #00d4ff;           /* Primary accent */
+  --brand-cyan-light: #5ce1ff;     /* Hover states */
+  --brand-cyan-dark: #00a8cc;      /* Active states */
+  --brand-purple: #a855f7;         /* Secondary accent */
+  --brand-purple-light: #c084fc;   /* Hover */
+  --brand-emerald: #10b981;        /* Success states */
+  --brand-amber: #f59e0b;          /* Warning/highlight */
+  --brand-rose: #f43f5e;           /* Error/destructive */
+
+  /* ============================================
+     GLOW EFFECTS
+     ============================================ */
+  --glow-cyan: rgba(0, 212, 255, 0.5);
+  --glow-cyan-strong: rgba(0, 212, 255, 0.7);
+  --glow-cyan-subtle: rgba(0, 212, 255, 0.25);
+  --glow-purple: rgba(168, 85, 247, 0.4);
+  --glow-purple-subtle: rgba(168, 85, 247, 0.2);
+
+  /* ============================================
+     GLASS EFFECTS
+     ============================================ */
+  --glass-highlight: rgba(255, 255, 255, 0.1);
+  --glass-highlight-strong: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(0, 212, 255, 0.3);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-bg-hover: rgba(255, 255, 255, 0.06);
+
+  /* ============================================
+     DEPTH & SHADOW
+     ============================================ */
+  --depth-shadow: rgba(0, 0, 0, 0.5);
+  --depth-shadow-strong: rgba(0, 0, 0, 0.8);
+  --ambient-glow: rgba(0, 212, 255, 0.05);
+
+  /* ============================================
+     SEMANTIC COLORS
+     ============================================ */
+  --background: var(--brand-obsidian);
+  --background-deep: var(--brand-void);
+  --foreground: #f0f6fc;
+  --card: var(--brand-carbon);
+  --card-foreground: #f0f6fc;
+  --popover: var(--brand-slate);
+  --popover-foreground: #f0f6fc;
+  --primary: var(--brand-cyan);
+  --primary-foreground: #0a0a0f;
+  --secondary: rgba(0, 212, 255, 0.1);
+  --muted: rgba(255, 255, 255, 0.04);
+  --muted-foreground: #8b949e;
+  --accent: rgba(168, 85, 247, 0.15);
+  --accent-foreground: var(--brand-purple-light);
+  --destructive: var(--brand-rose);
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: var(--glow-cyan);
+
+  /* ============================================
+     LAYOUT
+     ============================================ */
+  --radius: 1rem;
+
+  /* ============================================
+     SAFE AREAS
+     ============================================ */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+}

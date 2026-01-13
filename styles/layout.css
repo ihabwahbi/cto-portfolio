@@ -1,0 +1,219 @@
+/* ==============================================
+   LAYOUT & TYPOGRAPHY STYLES
+   ============================================== */
+
+/* ============================================
+   TYPOGRAPHY SCALE
+   ============================================ */
+
+/* Hero Title: 48px -> 96px */
+.hero-title {
+  font-size: clamp(3rem, 8vw + 1rem, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+}
+
+/* Section Title: 32px -> 56px */
+.section-title {
+  font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Subsection Title: 24px -> 36px */
+.subsection-title {
+  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* Statement: 18px -> 28px */
+.statement {
+  font-size: clamp(1.125rem, 2vw + 0.5rem, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+/* Body Large */
+.body-lg {
+  font-size: clamp(1rem, 1.2vw + 0.5rem, 1.25rem);
+  line-height: 1.7;
+}
+
+/* Metric Value: 32px -> 64px */
+.metric-value {
+  font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.0;
+}
+
+/* Label */
+.label-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-cyan);
+}
+
+/* Metric Label */
+.metric-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@media (min-width: 768px) {
+  .metric-label {
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* Code/Mono */
+.code-text {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    /* Extra left padding (40px offset) to visually balance the fixed section indicator on the right */
+    padding-left: 96px;
+    padding-right: 56px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    /* Extra left padding (40px offset) to visually balance the fixed section indicator on the right */
+    padding-left: 112px;
+    padding-right: 72px;
+  }
+}
+
+.container-narrow {
+  max-width: 900px;
+}
+
+.container-wide {
+  max-width: 1600px;
+}
+
+/* ============================================
+   SECTION SPACING
+   ============================================ */
+
+.section-spacing {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+}
+
+@media (min-width: 640px) { .section-spacing { padding-top: 112px; padding-bottom: 112px; } }
+@media (min-width: 768px) { .section-spacing { padding-top: 140px; padding-bottom: 140px; } }
+@media (min-width: 1024px) { .section-spacing { padding-top: 180px; padding-bottom: 180px; } }
+
+/* Section divider - subtle top border for visual separation */
+.section-spacing::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(80%, 600px);
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 20%,
+    rgba(0, 212, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.06) 80%,
+    transparent 100%
+  );
+}
+
+/* Remove divider from first section after hero */
+.section-spacing:first-of-type::before {
+  display: none;
+}
+
+.section-spacing-sm {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  position: relative;
+}
+
+@media (min-width: 640px) { .section-spacing-sm { padding-top: 80px; padding-bottom: 80px; } }
+@media (min-width: 768px) { .section-spacing-sm { padding-top: 96px; padding-bottom: 96px; } }
+
+/* ============================================
+   FIXED BACKGROUND
+   ============================================ */
+
+.fixed-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  contain: strict;
+  pointer-events: none;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.nav-blur {
+  background: rgba(13, 17, 23, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* ============================================
+   SAFE AREAS
+   ============================================ */
+
+.pb-safe { padding-bottom: max(env(safe-area-inset-bottom, 0px), 1rem); }
+.pt-safe { padding-top: max(env(safe-area-inset-top, 0px), 1rem); }
+
+/* ============================================
+   TOUCH TARGETS
+   ============================================ */
+
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
