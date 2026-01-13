@@ -254,19 +254,79 @@ export function ContactSection() {
           >
             <GlassCard>
               {status === "success" ? (
-                <div className="text-center py-8">
-                  <CheckCircle2 className="w-16 h-16 text-brand-emerald mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
-                  <p className="text-white/60 mb-6">
-                    Thank you for reaching out. I&apos;ll get back to you within 24-48 hours.
-                  </p>
-                  <Button
-                    variant="outline"
-                    onClick={() => setStatus("idle")}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="text-center py-10"
+                >
+                  {/* Animated success icon with glow */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: 0.1
+                    }}
+                    className="relative mx-auto w-24 h-24 mb-6"
                   >
-                    Send Another Message
-                  </Button>
-                </div>
+                    <div className="absolute inset-0 bg-brand-emerald/20 rounded-full blur-xl animate-pulse" />
+                    <div className="relative w-full h-full rounded-full bg-gradient-to-br from-brand-emerald/20 to-brand-cyan/20 border border-brand-emerald/30 flex items-center justify-center">
+                      <motion.div
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 15,
+                          delay: 0.3
+                        }}
+                      >
+                        <CheckCircle2 className="w-12 h-12 text-brand-emerald" />
+                      </motion.div>
+                    </div>
+                  </motion.div>
+
+                  <motion.h3
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-2xl font-bold text-white mb-3"
+                  >
+                    Message Sent Successfully!
+                  </motion.h3>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="text-white/60 mb-8 max-w-sm mx-auto"
+                  >
+                    Thank you for reaching out! I&apos;m excited to connect and will get back to you within 24-48 hours.
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex flex-col sm:flex-row items-center justify-center gap-3"
+                  >
+                    <Button
+                      variant="outline"
+                      onClick={() => setStatus("idle")}
+                    >
+                      Send Another Message
+                    </Button>
+                    <a href="https://www.linkedin.com/in/ihabwahbi" target="_blank" rel="noopener noreferrer">
+                      <Button variant="glow" size="default" className="group">
+                        <Linkedin className="w-4 h-4" />
+                        Connect on LinkedIn
+                      </Button>
+                    </a>
+                  </motion.div>
+                </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
@@ -316,10 +376,19 @@ export function ContactSection() {
                   />
 
                   {status === "error" && (
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
-                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                      {errorMessage}
-                    </div>
+                    <motion.div
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      className="flex items-start gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/20"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                        <AlertCircle className="w-4 h-4 text-red-400" />
+                      </div>
+                      <div>
+                        <p className="text-red-400 font-medium text-sm">Failed to send message</p>
+                        <p className="text-red-400/70 text-xs mt-0.5">{errorMessage}</p>
+                      </div>
+                    </motion.div>
                   )}
 
                   <Button
