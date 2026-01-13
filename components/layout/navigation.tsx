@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { Menu, X, Download, Github, Linkedin, Mail } from "lucide-react"
+import { Menu, X, Download, Github, Linkedin, Mail, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui"
 import { useIsDesktop } from "@/hooks"
@@ -20,6 +20,7 @@ const socialLinks = [
   { href: "https://github.com/ihabwahbi", icon: Github, label: "GitHub" },
   { href: "https://www.linkedin.com/in/ihabwahbi", icon: Linkedin, label: "LinkedIn" },
   { href: "mailto:ihab.a.wahbi@gmail.com", icon: Mail, label: "Email" },
+  { href: "https://wa.me/61422204510", icon: Phone, label: "WhatsApp" },
 ]
 
 export function Navigation() {
