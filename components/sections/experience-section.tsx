@@ -8,71 +8,71 @@ import { cn } from "@/lib/utils"
 
 const experiences = [
   {
-    company: "TechCorp Global",
-    logo: "TC",
-    role: "VP of Engineering",
-    period: "2021 - Present",
-    location: "San Francisco, CA",
+    company: "SLB (Global Energy Leader)",
+    logo: "SLB",
+    role: "Resource Strategy & Analytics Manager",
+    period: "2025 - Present",
+    location: "Perth, Australia",
     description:
-      "Leading 200+ engineers across 5 product verticals. Drove architectural transformation to microservices, reducing deployment time by 80%.",
+      "Leading digital transformation of financial operations through AI-powered analytics. Built enterprise cost intelligence platform from scratch, enabling real-time P&L visibility and predictive decision-making across the region.",
     achievements: [
-      "Scaled engineering org from 80 to 200+ engineers",
-      "Led $500M platform modernization initiative",
-      "Achieved 99.99% platform uptime",
-      "Reduced infrastructure costs by 40%",
+      "Built AI-powered P&L forecasting engine predicting costs 3-12 months ahead",
+      "Architected full-stack Cost Management Hub with real-time dashboards",
+      "Reduced manual reporting effort by 80% through intelligent automation",
+      "Established weekly data-driven decision cadence for senior leadership",
     ],
-    technologies: ["Kubernetes", "AWS", "Go", "React", "PostgreSQL"],
+    technologies: ["Python", "Next.js", "PostgreSQL", "Power BI", "Azure", "Machine Learning"],
     color: "cyan",
   },
   {
-    company: "InnovateTech Inc",
-    logo: "IT",
-    role: "Senior Director of Engineering",
-    period: "2018 - 2021",
-    location: "New York, NY",
+    company: "SLB (Global HQ)",
+    logo: "SLB",
+    role: "Product Development Lead, AI Systems",
+    period: "2023 - 2024",
+    location: "Paris, France",
     description:
-      "Built and led the platform engineering organization. Architected real-time data processing systems handling 10M+ events/second.",
+      "Selected to lead AI product innovation at global headquarters. Designed and built intelligent automation systems that transformed how the company forecasts demand and manages resources across 120+ countries.",
     achievements: [
-      "Built engineering team from 0 to 60",
-      "Launched 3 major product lines",
-      "Implemented ML-powered recommendations",
-      "Drove 150% revenue growth",
+      "Built 'AquaPulse' - multi-agent AI system for demand planning",
+      "Achieved 20-35% improvement in forecast accuracy over legacy methods",
+      "Led SAP IBP architecture overhaul affecting $50M+ enterprise system",
+      "Authored strategic roadmap adopted by global executive leadership",
     ],
-    technologies: ["Python", "Kafka", "Spark", "TensorFlow", "GCP"],
+    technologies: ["Python", "LangGraph", "OpenAI API", "SAP IBP", "Neo4j", "Google Cloud"],
     color: "purple",
   },
   {
-    company: "StartupXYZ",
-    logo: "SX",
-    role: "Engineering Manager",
-    period: "2015 - 2018",
-    location: "Austin, TX",
+    company: "SLB",
+    logo: "SLB",
+    role: "Materials & Supply Chain Lead",
+    period: "2022 - 2023",
+    location: "Adelaide, Australia",
     description:
-      "First engineering hire. Built the technical foundation and scaled the team through Series A to C funding rounds.",
+      "First person to establish this regional function. Transformed manual supply chain operations into automated, data-driven systems while leading critical enterprise system migration across Australia, NZ, and Papua New Guinea.",
     achievements: [
-      "Grew from seed to $50M Series C",
-      "Built core product from scratch",
-      "Established engineering culture",
-      "Led technical due diligence for acquisition",
+      "Reduced inventory days-on-hand from 160 to 90 days (44% improvement)",
+      "Built AI chatbot for supply chain queries, cutting training time by 70%",
+      "Led Lawson-to-SAP migration ensuring zero operational disruption",
+      "Exceeded $22M annual revenue target through predictive resource planning",
     ],
-    technologies: ["Node.js", "React", "MongoDB", "Redis", "Docker"],
+    technologies: ["Python", "SAP S/4HANA", "Power BI", "Azure Functions", "SvelteKit"],
     color: "emerald",
   },
   {
-    company: "Enterprise Systems Co",
-    logo: "ES",
-    role: "Senior Software Engineer",
-    period: "2011 - 2015",
-    location: "Seattle, WA",
+    company: "SLB",
+    logo: "SLB",
+    role: "Field Service Manager",
+    period: "2020 - 2022",
+    location: "South Australia (Cooper Basin)",
     description:
-      "Core contributor to enterprise cloud platform. Led migration of legacy systems to cloud-native architecture.",
+      "Full P&L accountability for $12M annual operation during COVID-19 crisis. Led 50+ engineers through unprecedented challenges while scaling operations and maintaining exceptional safety and service quality standards.",
     achievements: [
-      "Architected microservices framework",
-      "Mentored 15+ junior engineers",
-      "Filed 3 patents",
-      "Promoted twice in 4 years",
+      "Managed full P&L through COVID - strategic downsizing then rapid scale-up",
+      "Tripled truck operations, growing revenue from $4M to $8.5M annually",
+      "Achieved ZERO safety incidents (down from 96% TRIF) through culture change",
+      "Maintained 95% service quality despite interstate travel restrictions",
     ],
-    technologies: ["Java", "Spring", "AWS", "MySQL", "Elasticsearch"],
+    technologies: ["Operations Management", "P&L", "Team Leadership", "Crisis Management"],
     color: "amber",
   },
 ]
@@ -93,11 +93,11 @@ export function ExperienceSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="label-text mb-4 block">Experience</span>
           <h2 className="section-title gradient-text-white mb-6">
-            A Journey of <br />
-            <span className="gradient-text">Impact & Growth</span>
+            From Field Operations <br />
+            <span className="gradient-text">To Global Tech Leadership</span>
           </h2>
           <p className="statement text-white/60">
-            15+ years of progressive leadership across startups and Fortune 500 companies.
+            14+ years progressing from frontline operations to building AI systems at global headquarters—with P&L accountability at every level.
           </p>
         </div>
 

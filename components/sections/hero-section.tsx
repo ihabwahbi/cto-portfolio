@@ -24,7 +24,7 @@ export function HeroSection() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-emerald" />
             </span>
             <span className="text-sm font-medium text-brand-cyan">
-              Available for CTO Opportunities
+              Relocating to Dubai | Open to CTO Opportunities
             </span>
           </motion.div>
 
@@ -35,8 +35,8 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hero-title mt-8 sm:mt-10 md:mt-12"
           >
-            <span className="gradient-text-white block leading-[1.1]">Building the</span>
-            <span className="gradient-text-animated block leading-[1.1]">Future of Tech</span>
+            <span className="gradient-text-white block leading-[1.1]">Where Operations</span>
+            <span className="gradient-text-animated block leading-[1.1]">Meets Innovation</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -46,9 +46,10 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="statement text-white/60 max-w-2xl w-full mx-auto mt-6 sm:mt-8 md:mt-10 text-center px-4"
           >
-            Technology executive with 15+ years transforming organizations through
-            innovative engineering leadership, scalable architectures, and
-            high-performing teams.
+            Operations executive turned technology leader with 14+ years building
+            high-performing teams, automating complex workflows, and delivering
+            measurable P&L impact. I don&apos;t just build technology—I understand
+            the business it serves.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -60,10 +61,10 @@ export function HeroSection() {
           >
             <Button variant="glow" size="xl" className="group">
               <Sparkles className="w-5 h-5 transition-transform group-hover:rotate-12" />
-              View My Journey
+              See My Track Record
             </Button>
             <Button variant="outline" size="xl">
-              Let&apos;s Connect
+              Let&apos;s Talk
             </Button>
           </motion.div>
         </div>
@@ -79,10 +80,10 @@ export function HeroSection() {
         <div className="container py-10 sm:py-12 md:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 max-w-5xl mx-auto">
             {[
-              { value: "15+", label: "Years Experience" },
-              { value: "$2B+", label: "Revenue Impact" },
-              { value: "500+", label: "Engineers Led" },
-              { value: "12", label: "Products Launched" },
+              { value: "14+", label: "Years Leading Teams" },
+              { value: "$12M", label: "P&L Accountability" },
+              { value: "50+", label: "Engineers Managed" },
+              { value: "3", label: "AI Products Built" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

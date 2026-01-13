@@ -5,9 +5,9 @@ import {
   TrendingUp,
   Users,
   Rocket,
-  Award,
   DollarSign,
   Zap,
+  Brain,
 } from "lucide-react"
 import { GlassCard } from "@/components/ui"
 import { useAnimateIn, useCounter } from "@/hooks"
@@ -16,50 +16,50 @@ import { cn } from "@/lib/utils"
 const metrics = [
   {
     icon: DollarSign,
-    value: 2.4,
-    suffix: "B+",
-    label: "Revenue Generated",
-    description: "Total business impact",
+    value: 1.5,
+    suffix: "M+",
+    label: "Software Value Delivered",
+    description: "Enterprise platforms built solo",
     color: "cyan",
-  },
-  {
-    icon: Users,
-    value: 500,
-    suffix: "+",
-    label: "Engineers Led",
-    description: "Direct and indirect engineering reports",
-    color: "purple",
   },
   {
     icon: Rocket,
-    value: 12,
-    suffix: "",
-    label: "Products Launched",
-    description: "Major product launches and initiatives",
-    color: "emerald",
-  },
-  {
-    icon: TrendingUp,
-    value: 99.99,
-    suffix: "%",
-    label: "Platform Uptime",
-    description: "Enterprise-grade reliability",
-    color: "amber",
+    value: 360,
+    suffix: "K+",
+    label: "Lines of Code Shipped",
+    description: "Production-grade TypeScript & Python",
+    color: "purple",
   },
   {
     icon: Zap,
-    value: 80,
-    suffix: "%",
-    label: "Deployment Speed",
-    description: "Reduction in deployment cycle time",
+    value: 40,
+    suffix: "x",
+    label: "Faster Than Industry",
+    description: "Built $485K platform in 1 week solo",
+    color: "emerald",
+  },
+  {
+    icon: Brain,
+    value: 9,
+    suffix: "",
+    label: "AI Integrations",
+    description: "OpenAI, Claude, DeepSeek & more",
+    color: "amber",
+  },
+  {
+    icon: Users,
+    value: 50,
+    suffix: "+",
+    label: "Team Members Led",
+    description: "Managed through COVID crisis",
     color: "cyan",
   },
   {
-    icon: Award,
-    value: 3,
-    suffix: "",
-    label: "Patents Filed",
-    description: "Technical innovations patented",
+    icon: TrendingUp,
+    value: 12,
+    suffix: "M",
+    label: "P&L Accountability",
+    description: "Full financial ownership of operations",
     color: "purple",
   },
 ]
@@ -129,10 +129,10 @@ export function AchievementsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="label-text mb-4 block">Impact & Achievements</span>
           <h2 className="section-title gradient-text-white mb-6">
-            Measurable <span className="gradient-text">Results</span>
+            Real <span className="gradient-text">Results</span>
           </h2>
           <p className="statement text-white/60">
-            Numbers that tell the story of transformative leadership and execution excellence.
+            Actual outcomes from my career—every number verified and documented.
           </p>
         </div>
 
@@ -151,7 +151,7 @@ export function AchievementsSection() {
           ))}
         </div>
 
-        {/* Awards/Recognition */}
+        {/* Enterprise Platforms Built */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -161,34 +161,34 @@ export function AchievementsSection() {
         >
           <GlassCard padding="xl">
             <h3 className="text-xl font-semibold text-white text-center mb-8">
-              Recognition & Awards
+              Enterprise Platforms I&apos;ve Built
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
-                  title: "CTO of the Year",
-                  org: "Tech Leadership Awards",
-                  year: "2023",
+                  title: "Cost Management Hub",
+                  org: "195K LOC • $1.1M-$1.5M value",
+                  year: "Built solo in 2 months",
                 },
                 {
-                  title: "Top 40 Under 40",
-                  org: "Fortune Magazine",
-                  year: "2022",
+                  title: "Datacenter Platform",
+                  org: "167K LOC • Full DCIM + AI",
+                  year: "Built solo in 1 week",
                 },
                 {
-                  title: "Engineering Excellence",
-                  org: "IEEE Computer Society",
-                  year: "2021",
+                  title: "AquaPulse AI System",
+                  org: "Multi-agent demand planning",
+                  year: "Deployed at Global HQ",
                 },
-              ].map((award, index) => (
+              ].map((project) => (
                 <div
-                  key={award.title}
+                  key={project.title}
                   className="text-center p-6 rounded-xl bg-white/[0.02] border border-white/5"
                 >
-                  <Award className="w-8 h-8 text-brand-amber mx-auto mb-3" />
-                  <h4 className="font-semibold text-white mb-1">{award.title}</h4>
-                  <p className="text-sm text-white/50">{award.org}</p>
-                  <p className="text-xs text-brand-cyan mt-2">{award.year}</p>
+                  <Rocket className="w-8 h-8 text-brand-cyan mx-auto mb-3" />
+                  <h4 className="font-semibold text-white mb-1">{project.title}</h4>
+                  <p className="text-sm text-white/50">{project.org}</p>
+                  <p className="text-xs text-brand-emerald mt-2">{project.year}</p>
                 </div>
               ))}
             </div>

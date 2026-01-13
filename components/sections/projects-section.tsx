@@ -8,60 +8,66 @@ import { cn } from "@/lib/utils"
 
 const projects = [
   {
-    title: "Cloud Platform Modernization",
-    category: "Enterprise Architecture",
+    title: "TrueSpend Cost Intelligence",
+    category: "Financial Platform",
     description:
-      "Led complete transformation from monolithic architecture to cloud-native microservices, serving 50M+ daily active users.",
-    impact: "$120M annual cost savings",
-    technologies: ["Kubernetes", "AWS", "Go", "Terraform"],
+      "Built a complete enterprise cost management platform solo in 2 months. Real-time P&L tracking, AI-powered forecasting, and automated variance reporting.",
+    impact: "$1.1M-$1.5M platform value",
+    technologies: ["Next.js", "TypeScript", "Python", "OpenAI", "Azure"],
     metrics: [
-      { label: "Latency Reduction", value: "65%" },
-      { label: "Deployment Frequency", value: "100x" },
+      { label: "Lines of Code", value: "195K" },
+      { label: "Build Time", value: "2 months" },
     ],
     featured: true,
     color: "cyan",
+    liveUrl: "https://truespend.app",
+    githubUrl: "https://github.com/ihabwahbi/cost-management",
   },
   {
-    title: "Real-time Analytics Engine",
-    category: "Data Platform",
+    title: "T964 Datacenter Platform",
+    category: "Full Business System",
     description:
-      "Architected and built a real-time data processing platform handling 10M+ events per second with sub-second latency.",
-    impact: "Enabled ML-powered features",
-    technologies: ["Apache Kafka", "Spark", "Python", "ClickHouse"],
+      "Complete enterprise platform built solo in ONE WEEK: client portal, admin panel, CRM, billing, AI chat advisor, and bilingual Arabic/English support.",
+    impact: "$485K-$695K platform value",
+    technologies: ["Next.js", "React", "tRPC", "PostgreSQL", "AI"],
     metrics: [
-      { label: "Events/Second", value: "10M+" },
-      { label: "Processing Latency", value: "<1s" },
+      { label: "Lines of Code", value: "167K" },
+      { label: "Build Time", value: "1 week" },
     ],
     featured: true,
     color: "purple",
+    liveUrl: "https://t964datacenter.azurewebsites.net",
+    githubUrl: "https://github.com/ihabwahbi/t964-datacenter",
   },
   {
-    title: "AI-Powered Recommendations",
-    category: "Machine Learning",
+    title: "AquaPulse Multi-Agent AI",
+    category: "AI System",
     description:
-      "Built and deployed ML recommendation system that increased user engagement by 40% and revenue by $50M annually.",
-    impact: "$50M revenue increase",
-    technologies: ["TensorFlow", "Python", "Redis", "gRPC"],
+      "Production-grade AI system with multiple specialized agents for demand planning, inventory queries, and operations support. Deployed at global HQ.",
+    impact: "20-35% better forecasts",
+    technologies: ["Python", "LangGraph", "Neo4j", "OpenAI"],
     metrics: [
-      { label: "Engagement Lift", value: "40%" },
-      { label: "Model Accuracy", value: "94%" },
+      { label: "Agent Types", value: "5" },
+      { label: "Accuracy Gain", value: "35%" },
     ],
     featured: false,
     color: "emerald",
+    githubUrl: "https://github.com/ihabwahbi/aquapulse-langgraph",
   },
   {
-    title: "Developer Platform",
-    category: "Internal Tools",
+    title: "Operations AI Chatbot",
+    category: "Staff Tool",
     description:
-      "Created internal developer platform that improved engineering productivity by 60% through automated workflows.",
-    impact: "60% productivity gain",
-    technologies: ["React", "Node.js", "PostgreSQL", "Docker"],
+      "AI-powered chatbot for operations staff to query inventory, supply chain status, and planning data using natural language instead of complex systems.",
+    impact: "70% faster training",
+    technologies: ["SvelteKit", "Python", "OpenAI", "Azure"],
     metrics: [
-      { label: "Dev Productivity", value: "+60%" },
-      { label: "Onboarding Time", value: "-75%" },
+      { label: "Training Time", value: "-70%" },
+      { label: "Query Speed", value: "<200ms" },
     ],
     featured: false,
     color: "amber",
+    githubUrl: "https://github.com/ihabwahbi/mns-chatbot-sveltekit-jsdoc",
   },
 ]
 
@@ -79,12 +85,12 @@ export function ProjectsSection() {
       <div className="container">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="label-text mb-4 block">Featured Work</span>
+          <span className="label-text mb-4 block">What I&apos;ve Built</span>
           <h2 className="section-title gradient-text-white mb-6">
-            Projects & <span className="gradient-text">Case Studies</span>
+            Systems That <span className="gradient-text">Actually Ship</span>
           </h2>
           <p className="statement text-white/60">
-            Transformative initiatives that drove significant business impact.
+            Real platforms I&apos;ve built solo—production-grade, enterprise-ready, and fast.
           </p>
         </div>
 
@@ -109,12 +115,26 @@ export function ProjectsSection() {
                       {project.category}
                     </Badge>
                     <div className="flex items-center gap-2">
-                      <button className="w-9 h-9 rounded-lg flex items-center justify-center text-white/40 hover:text-white hover:bg-white/5 transition-colors">
-                        <Github className="w-4 h-4" />
-                      </button>
-                      <button className="w-9 h-9 rounded-lg flex items-center justify-center text-white/40 hover:text-white hover:bg-white/5 transition-colors">
-                        <ExternalLink className="w-4 h-4" />
-                      </button>
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-9 h-9 rounded-lg flex items-center justify-center text-white/40 hover:text-white hover:bg-white/5 transition-colors"
+                        >
+                          <Github className="w-4 h-4" />
+                        </a>
+                      )}
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-9 h-9 rounded-lg flex items-center justify-center text-white/40 hover:text-white hover:bg-white/5 transition-colors"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
                     </div>
                   </div>
 
@@ -172,14 +192,25 @@ export function ProjectsSection() {
                 viewport={{ once: true }}
               >
                 <GlassCard className="h-full group">
-                  <Badge
-                    variant={
-                      project.color === "emerald" ? "success" : "warning"
-                    }
-                    className="mb-3"
-                  >
-                    {project.category}
-                  </Badge>
+                  <div className="flex items-start justify-between mb-3">
+                    <Badge
+                      variant={
+                        project.color === "emerald" ? "success" : "warning"
+                      }
+                    >
+                      {project.category}
+                    </Badge>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 rounded-lg flex items-center justify-center text-white/40 hover:text-white hover:bg-white/5 transition-colors"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
                   <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-brand-cyan transition-colors">
                     {project.title}
                   </h3>

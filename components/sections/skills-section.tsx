@@ -2,13 +2,9 @@
 
 import { motion } from "motion/react"
 import {
-  Code2,
-  Cloud,
-  Database,
   Brain,
   Users,
   TrendingUp,
-  Shield,
   Workflow,
 } from "lucide-react"
 import { GlassCard } from "@/components/ui"
@@ -17,58 +13,62 @@ import { cn } from "@/lib/utils"
 
 const skillCategories = [
   {
-    title: "Technical Leadership",
-    icon: Code2,
+    title: "Operations & P&L",
+    icon: TrendingUp,
     color: "cyan",
     skills: [
-      { name: "System Architecture", level: 95 },
-      { name: "Technical Strategy", level: 92 },
-      { name: "Code Review & Standards", level: 90 },
-      { name: "Performance Optimization", level: 88 },
+      { name: "P&L Management & Accountability", level: 95 },
+      { name: "Cost Control & Optimization", level: 94 },
+      { name: "Supply Chain & Inventory", level: 92 },
+      { name: "Crisis & Change Management", level: 90 },
     ],
   },
   {
-    title: "Cloud & Infrastructure",
-    icon: Cloud,
+    title: "Team Leadership",
+    icon: Users,
     color: "purple",
     skills: [
-      { name: "AWS / GCP / Azure", level: 94 },
-      { name: "Kubernetes & Docker", level: 92 },
-      { name: "CI/CD Pipelines", level: 90 },
-      { name: "Infrastructure as Code", level: 88 },
+      { name: "Building & Scaling Teams", level: 96 },
+      { name: "Cross-functional Collaboration", level: 94 },
+      { name: "Mentoring & Staff Development", level: 92 },
+      { name: "Remote & Multi-site Management", level: 90 },
     ],
   },
   {
-    title: "Data & AI/ML",
+    title: "Data & Business Intelligence",
     icon: Brain,
     color: "emerald",
     skills: [
-      { name: "Data Architecture", level: 88 },
-      { name: "Machine Learning", level: 82 },
-      { name: "Analytics & BI", level: 85 },
-      { name: "Real-time Processing", level: 90 },
+      { name: "Dashboards & Real-time Reporting", level: 95 },
+      { name: "Predictive Analytics & Forecasting", level: 92 },
+      { name: "KPI Tracking & Performance Metrics", level: 90 },
+      { name: "Data-Driven Decision Making", level: 94 },
     ],
   },
   {
-    title: "Engineering Management",
-    icon: Users,
+    title: "Technology & Automation",
+    icon: Workflow,
     color: "amber",
     skills: [
-      { name: "Team Building", level: 96 },
-      { name: "Agile / Scrum", level: 94 },
-      { name: "Mentorship", level: 95 },
-      { name: "Cross-functional Leadership", level: 92 },
+      { name: "AI & Intelligent Automation", level: 94 },
+      { name: "Full-Stack App Development", level: 92 },
+      { name: "Enterprise System Integration", level: 90 },
+      { name: "Cloud & Infrastructure", level: 88 },
     ],
   },
 ]
 
 const technologies = [
-  "TypeScript", "Python", "Go", "Java", "Rust", "SQL",
-  "React", "Node.js", "GraphQL", "gRPC",
-  "PostgreSQL", "MongoDB", "Redis", "Elasticsearch",
-  "Kubernetes", "Terraform", "AWS", "GCP",
-  "Kafka", "RabbitMQ", "Apache Spark",
-  "TensorFlow", "PyTorch", "OpenAI",
+  // Business & Analytics
+  "Power BI", "SAP", "Excel & Data Analysis",
+  // Development
+  "Python", "TypeScript", "React", "Next.js",
+  // AI & Automation
+  "AI/ML Systems", "OpenAI", "Process Automation",
+  // Cloud & Infrastructure
+  "Azure", "Google Cloud", "PostgreSQL",
+  // Enterprise
+  "ERP Integration", "API Development", "Mobile Apps",
 ]
 
 export function SkillsSection() {
@@ -87,10 +87,10 @@ export function SkillsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="label-text mb-4 block">Skills & Expertise</span>
           <h2 className="section-title gradient-text-white mb-6">
-            Technical <span className="gradient-text">Mastery</span>
+            Business-First <span className="gradient-text">Technology</span>
           </h2>
           <p className="statement text-white/60">
-            Deep expertise across the full technology stack, from architecture to execution.
+            I build technology that drives real business outcomes—lower costs, better decisions, and scalable operations.
           </p>
         </div>
 
@@ -163,7 +163,7 @@ export function SkillsSection() {
           className="text-center"
         >
           <h3 className="text-lg font-semibold text-white/80 mb-6">
-            Technologies & Tools
+            Tools I Use to Deliver Results
           </h3>
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {technologies.map((tech, index) => (

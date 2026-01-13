@@ -9,27 +9,27 @@ import { cn } from "@/lib/utils"
 const highlights = [
   {
     icon: Briefcase,
-    title: "Current Role",
-    value: "VP of Engineering",
-    description: "Fortune 500 Tech Company",
+    title: "Current Focus",
+    value: "AI & Operations",
+    description: "Building intelligent systems at SLB",
   },
   {
     icon: GraduationCap,
     title: "Education",
-    value: "MS Computer Science",
-    description: "Stanford University",
+    value: "B.Eng Electrical",
+    description: "University of Jordan",
   },
   {
     icon: MapPin,
     title: "Location",
-    value: "Perth, Australia",
-    description: "Open to relocate to Dubai",
+    value: "Perth → Dubai",
+    description: "Ready to relocate immediately",
   },
   {
     icon: Globe,
     title: "Languages",
-    value: "English, Arabic",
-    description: "Native & Fluent",
+    value: "English & Arabic",
+    description: "Native in both",
   },
 ]
 
@@ -55,8 +55,8 @@ export function AboutSection() {
             About Me
           </motion.span>
           <h2 className="section-title gradient-text-white mb-6">
-            Technology Leader & <br />
-            <span className="gradient-text">Strategic Innovator</span>
+            Operations DNA, <br />
+            <span className="gradient-text">Technology Mindset</span>
           </h2>
         </div>
 
@@ -64,34 +64,37 @@ export function AboutSection() {
           {/* Bio */}
           <div className="space-y-6">
             <p className="body-lg text-white/80 leading-relaxed">
-              I&apos;m a passionate technology executive who thrives at the intersection
-              of innovation and execution. With over 15 years of experience building
-              and scaling engineering organizations, I&apos;ve led transformative
-              initiatives that have generated billions in revenue.
+              I started my career on the front lines—running field operations in Iraq,
+              managing crews in remote locations, and learning what it takes to keep
+              complex operations running smoothly. That foundation taught me something
+              no classroom could: technology only matters if it solves real problems
+              for real people.
             </p>
             <p className="body-lg text-white/60 leading-relaxed">
-              My approach combines deep technical expertise with strategic business
-              acumen. I believe in building cultures of excellence where engineers
-              are empowered to solve complex problems and deliver exceptional value.
+              Over 14 years, I progressed from field engineer to leading AI product
+              development at a Fortune 500 global headquarters. Along the way, I&apos;ve
+              held full P&L accountability for $12M operations, managed 50+ engineers
+              through the COVID crisis, and built AI systems that cut costs and
+              accelerated decision-making.
             </p>
             <p className="body-lg text-white/60 leading-relaxed">
-              From architecting cloud-native platforms to leading M&A technical
-              due diligence, I bring a comprehensive perspective to technology
-              leadership that drives measurable outcomes.
+              With Iraqi heritage and native Arabic fluency, I understand the Middle
+              East market deeply. I&apos;m not just relocating to Dubai—I&apos;m coming
+              home to a region I know and where I can make an immediate impact.
             </p>
 
             {/* Core values */}
             <div className="pt-6 border-t border-white/10">
               <h3 className="text-sm font-semibold text-white/40 uppercase tracking-wider mb-4">
-                Core Values
+                What I Bring
               </h3>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "Innovation",
-                  "Excellence",
-                  "Integrity",
-                  "Collaboration",
-                  "Growth Mindset",
+                  "P&L Accountability",
+                  "Team Development",
+                  "Operational Excellence",
+                  "AI & Automation",
+                  "Supply Chain Expertise",
                 ].map((value) => (
                   <span
                     key={value}
