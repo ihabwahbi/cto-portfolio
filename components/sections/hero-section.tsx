@@ -59,13 +59,17 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mt-10 sm:mt-12 md:mt-14"
           >
-            <Button variant="glow" size="xl" className="group">
-              <Sparkles className="w-5 h-5 transition-transform group-hover:rotate-12" />
-              See My Track Record
-            </Button>
-            <Button variant="outline" size="xl">
-              Let&apos;s Talk
-            </Button>
+            <a href="#experience">
+              <Button variant="glow" size="xl" className="group">
+                <Sparkles className="w-5 h-5 transition-transform group-hover:rotate-12" />
+                See My Track Record
+              </Button>
+            </a>
+            <a href="#contact">
+              <Button variant="outline" size="xl">
+                Let&apos;s Talk
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>

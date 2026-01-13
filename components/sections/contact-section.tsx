@@ -10,6 +10,13 @@ import {
   MapPin,
   Send,
   ArrowRight,
+  User,
+  Building2,
+  Phone,
+  MessageSquare,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
 } from "lucide-react"
 import { GlassCard, Button } from "@/components/ui"
 import { useAnimateIn } from "@/hooks"
@@ -27,6 +34,9 @@ interface FloatingInputProps {
   name: string
   icon: React.ComponentType<{ className?: string }>
   textarea?: boolean
+  value?: string
+  onChange?: (value: string) => void
+  required?: boolean
 }
 
 function FloatingInput({
@@ -35,20 +45,34 @@ function FloatingInput({
   name,
   icon: Icon,
   textarea = false,
+  value: controlledValue,
+  onChange,
+  required = false,
 }: FloatingInputProps) {
   const [isFocused, setIsFocused] = useState(false)
-  const [value, setValue] = useState("")
+  const [internalValue, setInternalValue] = useState("")
+
+  const value = controlledValue !== undefined ? controlledValue : internalValue
   const isActive = isFocused || value.length > 0
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const newValue = e.target.value
+    if (onChange) {
+      onChange(newValue)
+    } else {
+      setInternalValue(newValue)
+    }
+  }
 
   const inputProps = {
     type,
     name,
     id: name,
     value,
-    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-      setValue(e.target.value),
+    onChange: handleChange,
     onFocus: () => setIsFocused(true),
     onBlur: () => setIsFocused(false),
+    required,
     className: cn(
       "w-full bg-transparent border-none outline-none",
       "text-white placeholder-transparent",
@@ -106,10 +130,61 @@ function FloatingInput({
   )
 }
 
+type FormStatus = "idle" | "loading" | "success" | "error"
+
+interface FormData {
+  name: string
+  email: string
+  company: string
+  phone: string
+  message: string
+}
+
 export function ContactSection() {
   const { ref, isVisible, animationClass } = useAnimateIn<HTMLElement>({
     threshold: 0.2,
   })
+
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    message: "",
+  })
+  const [status, setStatus] = useState<FormStatus>("idle")
+  const [errorMessage, setErrorMessage] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus("loading")
+    setErrorMessage("")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message")
+      }
+
+      setStatus("success")
+      setFormData({ name: "", email: "", company: "", phone: "", message: "" })
+    } catch (error) {
+      setStatus("error")
+      setErrorMessage(error instanceof Error ? error.message : "Something went wrong")
+    }
+  }
+
+  const updateField = (field: keyof FormData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }))
+    if (status === "error") setStatus("idle")
+  }
 
   return (
     <section
@@ -178,41 +253,100 @@ export function ContactSection() {
             viewport={{ once: true }}
           >
             <GlassCard>
-              <form className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <FloatingInput
-                    label="Your Name"
-                    name="name"
-                    icon={Mail}
-                  />
-                  <FloatingInput
-                    label="Email Address"
-                    type="email"
-                    name="email"
-                    icon={Mail}
-                  />
+              {status === "success" ? (
+                <div className="text-center py-8">
+                  <CheckCircle2 className="w-16 h-16 text-brand-emerald mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
+                  <p className="text-white/60 mb-6">
+                    Thank you for reaching out. I&apos;ll get back to you within 24-48 hours.
+                  </p>
+                  <Button
+                    variant="outline"
+                    onClick={() => setStatus("idle")}
+                  >
+                    Send Another Message
+                  </Button>
                 </div>
-                <FloatingInput
-                  label="Subject"
-                  name="subject"
-                  icon={Send}
-                />
-                <FloatingInput
-                  label="Your Message"
-                  name="message"
-                  icon={Mail}
-                  textarea
-                />
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <FloatingInput
+                      label="Your Name *"
+                      name="name"
+                      icon={User}
+                      value={formData.name}
+                      onChange={(value) => updateField("name", value)}
+                      required
+                    />
+                    <FloatingInput
+                      label="Email Address *"
+                      type="email"
+                      name="email"
+                      icon={Mail}
+                      value={formData.email}
+                      onChange={(value) => updateField("email", value)}
+                      required
+                    />
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <FloatingInput
+                      label="Company (Optional)"
+                      name="company"
+                      icon={Building2}
+                      value={formData.company}
+                      onChange={(value) => updateField("company", value)}
+                    />
+                    <FloatingInput
+                      label="Phone (Optional)"
+                      type="tel"
+                      name="phone"
+                      icon={Phone}
+                      value={formData.phone}
+                      onChange={(value) => updateField("phone", value)}
+                    />
+                  </div>
+                  <FloatingInput
+                    label="Your Message *"
+                    name="message"
+                    icon={MessageSquare}
+                    textarea
+                    value={formData.message}
+                    onChange={(value) => updateField("message", value)}
+                    required
+                  />
 
-                <Button variant="glow" size="lg" className="w-full group">
-                  Send Message
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </Button>
+                  {status === "error" && (
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      {errorMessage}
+                    </div>
+                  )}
 
-                <p className="text-center text-xs text-white/40">
-                  I typically respond within 24-48 hours
-                </p>
-              </form>
+                  <Button
+                    variant="glow"
+                    size="lg"
+                    className="w-full group"
+                    type="submit"
+                    disabled={status === "loading"}
+                  >
+                    {status === "loading" ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                      </>
+                    )}
+                  </Button>
+
+                  <p className="text-center text-xs text-white/40">
+                    I typically respond within 24-48 hours
+                  </p>
+                </form>
+              )}
             </GlassCard>
           </motion.div>
         </div>
