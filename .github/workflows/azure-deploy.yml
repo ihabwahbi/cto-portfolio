@@ -55,11 +55,22 @@ jobs:
           cd .next/standalone && zip -r ../../deploy.zip .
 
       - name: Deploy to Azure
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: deploy.zip
+        run: |
+          echo "Deploying to Azure App Service..."
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            -u "${{ secrets.DEPLOY_USERNAME }}:${{ secrets.DEPLOY_PASSWORD }}" \
+            --data-binary @deploy.zip \
+            "https://${{ env.AZURE_WEBAPP_NAME }}.scm.azurewebsites.net/api/zipdeploy?isAsync=true" \
+            -H "Content-Type: application/zip")
+          code=$(echo "$response" | tail -n 1)
+
+          if [ "$code" = "200" ] || [ "$code" = "202" ]; then
+            echo "Deployment triggered successfully (HTTP $code)"
+          else
+            echo "Deployment failed (HTTP $code)"
+            echo "$response"
+            exit 1
+          fi
 
       - name: Wait for startup
         run: sleep 30
