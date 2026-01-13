@@ -6,7 +6,6 @@ import {
   Mail,
   Linkedin,
   Github,
-  Twitter,
   Calendar,
   MapPin,
   Send,
@@ -17,10 +16,9 @@ import { useAnimateIn } from "@/hooks"
 import { cn } from "@/lib/utils"
 
 const socialLinks = [
-  { icon: Linkedin, label: "LinkedIn", href: "#", color: "hover:text-[#0A66C2]" },
-  { icon: Github, label: "GitHub", href: "#", color: "hover:text-white" },
-  { icon: Twitter, label: "Twitter", href: "#", color: "hover:text-[#1DA1F2]" },
-  { icon: Mail, label: "Email", href: "#", color: "hover:text-brand-cyan" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/ihabwahbi", color: "hover:text-[#0A66C2]" },
+  { icon: Github, label: "GitHub", href: "https://github.com/ihabwahbi", color: "hover:text-white" },
+  { icon: Mail, label: "Email", href: "mailto:ihab.a.wahbi@gmail.com", color: "hover:text-brand-cyan" },
 ]
 
 interface FloatingInputProps {
@@ -139,7 +137,7 @@ export function ContactSection() {
                 <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-brand-cyan" />
                 </div>
-                <span>San Francisco, CA (Open to relocation)</span>
+                <span>Perth, Australia (Open to relocate to Dubai)</span>
               </div>
               <div className="flex items-center gap-3 text-white/70">
                 <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">

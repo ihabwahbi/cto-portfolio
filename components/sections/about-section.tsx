@@ -22,8 +22,8 @@ const highlights = [
   {
     icon: MapPin,
     title: "Location",
-    value: "San Francisco, CA",
-    description: "Open to relocation",
+    value: "Perth, Australia",
+    description: "Open to relocate to Dubai",
   },
   {
     icon: Globe,

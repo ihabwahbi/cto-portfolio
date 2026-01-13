@@ -19,7 +19,7 @@ const metrics = [
     value: 2.4,
     suffix: "B+",
     label: "Revenue Generated",
-    description: "Cumulative business impact across all roles",
+    description: "Total business impact",
     color: "cyan",
   },
   {
@@ -43,7 +43,7 @@ const metrics = [
     value: 99.99,
     suffix: "%",
     label: "Platform Uptime",
-    description: "Enterprise-grade reliability achievement",
+    description: "Enterprise-grade reliability",
     color: "amber",
   },
   {

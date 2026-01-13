@@ -15,14 +15,14 @@ export function Footer() {
           {/* Logo & Copyright */}
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center">
-              <span className="text-brand-cyan font-bold">JD</span>
+              <span className="text-brand-cyan font-bold">IW</span>
             </div>
             <div className="text-sm text-white/50">
               <p className="flex items-center gap-1.5">
                 Built with <Heart className="w-3.5 h-3.5 text-brand-rose" /> using
                 Next.js & Tailwind
               </p>
-              <p>2024 John Doe. All rights reserved.</p>
+              <p>2025 Ihab Wahbi. All rights reserved.</p>
             </div>
           </div>
 

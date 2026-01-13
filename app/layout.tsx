@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "John Doe | CTO & Technology Executive",
+  title: "Ihab Wahbi | CTO & Technology Executive",
   description:
     "Technology executive with 15+ years transforming organizations through innovative engineering leadership, scalable architectures, and high-performing teams.",
   keywords: [
@@ -26,16 +26,16 @@ export const metadata: Metadata = {
     "VP Engineering",
     "Tech Leader",
   ],
-  authors: [{ name: "John Doe" }],
+  authors: [{ name: "Ihab Wahbi" }],
   openGraph: {
-    title: "John Doe | CTO & Technology Executive",
+    title: "Ihab Wahbi | CTO & Technology Executive",
     description:
       "Technology executive with 15+ years transforming organizations through innovative engineering leadership.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "John Doe | CTO & Technology Executive",
+    title: "Ihab Wahbi | CTO & Technology Executive",
     description:
       "Technology executive with 15+ years transforming organizations through innovative engineering leadership.",
   },

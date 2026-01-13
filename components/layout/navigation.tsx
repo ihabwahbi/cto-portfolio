@@ -17,9 +17,9 @@ const navLinks = [
 ]
 
 const socialLinks = [
-  { href: "#", icon: Github, label: "GitHub" },
-  { href: "#", icon: Linkedin, label: "LinkedIn" },
-  { href: "#", icon: Mail, label: "Email" },
+  { href: "https://github.com/ihabwahbi", icon: Github, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/ihabwahbi", icon: Linkedin, label: "LinkedIn" },
+  { href: "mailto:ihab.a.wahbi@gmail.com", icon: Mail, label: "Email" },
 ]
 
 export function Navigation() {
@@ -58,10 +58,10 @@ export function Navigation() {
             {/* Logo */}
             <a href="#" className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center">
-                <span className="text-brand-cyan font-bold text-lg">JD</span>
+                <span className="text-brand-cyan font-bold text-lg">IW</span>
               </div>
               <span className="hidden sm:block text-white font-semibold">
-                John Doe
+                Ihab Wahbi
               </span>
             </a>
 
