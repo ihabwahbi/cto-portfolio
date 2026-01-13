@@ -214,6 +214,17 @@ export function ContactSection() {
                 </div>
                 <span>Perth, Australia (Open to relocate to Dubai)</span>
               </div>
+              <a
+                href="https://wa.me/61422204510"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-white/70 hover:text-brand-emerald transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-brand-emerald/10 transition-colors">
+                  <Phone className="w-5 h-5 text-brand-cyan group-hover:text-brand-emerald transition-colors" />
+                </div>
+                <span>+61 422 204 510 <span className="text-white/40">(WhatsApp)</span></span>
+              </a>
               <div className="flex items-center gap-3 text-white/70">
                 <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">
                   <Calendar className="w-5 h-5 text-brand-cyan" />
