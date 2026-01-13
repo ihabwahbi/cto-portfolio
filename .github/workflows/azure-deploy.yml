@@ -51,7 +51,7 @@ jobs:
       - name: Prepare standalone package
         run: |
           cp -r .next/static .next/standalone/.next/
-          cp -r public .next/standalone/
+          [ -d public ] && cp -r public .next/standalone/ || echo "No public folder"
           cd .next/standalone && zip -r ../../deploy.zip .
 
       - name: Deploy to Azure
