@@ -1,152 +1,130 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "motion/react"
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react"
-import { GlassCard, Button } from "@/components/ui"
+import { motion } from "motion/react"
+import {
+  Target,
+  Users,
+  BarChart3,
+  Code2,
+  Compass,
+} from "lucide-react"
+import { GlassCard } from "@/components/ui"
 import { useAnimateIn } from "@/hooks"
 import { cn } from "@/lib/utils"
 
-const testimonials = [
+const principles = [
   {
-    quote:
-      "One of the most impactful technology leaders I've worked with. Their ability to translate complex technical concepts into business value is remarkable. They transformed our engineering organization and delivered results that exceeded all expectations.",
-    author: "Sarah Chen",
-    title: "CEO",
-    company: "TechCorp Global",
-    image: "SC",
+    icon: Target,
+    title: "Business First, Technology Second",
+    description:
+      "I don't build tech for tech's sake. Every system I create must drive revenue, cut costs, or improve operations. If it doesn't move the business forward, it doesn't get built.",
+    color: "cyan",
   },
   {
-    quote:
-      "A rare combination of deep technical expertise and exceptional leadership skills. They built a world-class engineering team and established a culture of innovation that continues to drive our success.",
-    author: "Michael Roberts",
-    title: "Board Member",
-    company: "Fortune 500 Company",
-    image: "MR",
+    icon: Users,
+    title: "Build Teams, Not Just Systems",
+    description:
+      "Great technology is built by great people. I invest heavily in growing talent, creating cultures of ownership, and ensuring my teams can thrive long after I've moved on.",
+    color: "purple",
   },
   {
-    quote:
-      "Working with them was a masterclass in engineering leadership. Their strategic thinking, combined with hands-on technical ability, helped us scale from startup to acquisition in record time.",
-    author: "Jennifer Liu",
-    title: "VP Product",
-    company: "InnovateTech Inc",
-    image: "JL",
+    icon: BarChart3,
+    title: "Data-Driven Decisions",
+    description:
+      "I replace gut feelings with dashboards and forecasts. Every major decision should be backed by data—whether it's inventory levels, cost projections, or team performance.",
+    color: "emerald",
   },
   {
-    quote:
-      "Their mentorship transformed my career. They have a gift for identifying potential in people and helping them grow beyond what they thought possible. A true leader who leads by example.",
-    author: "David Park",
-    title: "Staff Engineer",
-    company: "Former Direct Report",
-    image: "DP",
+    icon: Code2,
+    title: "Hands-On When It Matters",
+    description:
+      "I'm not a manager who's forgotten how to build. I can architect a system, write the code, and ship it to production. When things get critical, I roll up my sleeves.",
+    color: "amber",
+  },
+  {
+    icon: Compass,
+    title: "Operations DNA",
+    description:
+      "I've run P&L, managed field crews, survived crises. I understand that technology serves operations, not the other way around. This perspective shapes everything I build.",
+    color: "cyan",
   },
 ]
 
 export function TestimonialsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
   const { ref, isVisible, animationClass } = useAnimateIn<HTMLElement>({
     threshold: 0.2,
   })
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
-
-  const prevTestimonial = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    )
-  }
-
   return (
     <section
-      id="testimonials"
+      id="approach"
       ref={ref}
       className={cn("section-spacing animate-in", isVisible && "is-visible", animationClass)}
     >
       <div className="container">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="label-text mb-4 block">Testimonials</span>
+          <span className="label-text mb-4 block">Leadership Philosophy</span>
           <h2 className="section-title gradient-text-white mb-6">
-            What People <span className="gradient-text">Say</span>
+            My Approach to <span className="gradient-text">Technology</span>
           </h2>
+          <p className="statement text-white/60">
+            How I think about building technology, leading teams, and delivering business value.
+          </p>
         </div>
 
-        {/* Testimonial carousel */}
-        <div className="max-w-4xl mx-auto">
-          <GlassCard padding="xl" className="relative overflow-hidden">
-            {/* Quote icon */}
-            <Quote className="absolute top-8 left-8 w-12 h-12 text-brand-cyan/20" />
-
-            {/* Content */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-                className="relative z-10"
-              >
-                <blockquote className="text-xl md:text-2xl text-white/90 leading-relaxed mb-8 pl-8">
-                  &ldquo;{testimonials[currentIndex].quote}&rdquo;
-                </blockquote>
-
-                <div className="flex items-center gap-4 pl-8">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-cyan to-brand-purple flex items-center justify-center text-white font-bold text-lg">
-                    {testimonials[currentIndex].image}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">
-                      {testimonials[currentIndex].author}
-                    </p>
-                    <p className="text-sm text-white/60">
-                      {testimonials[currentIndex].title},{" "}
-                      {testimonials[currentIndex].company}
-                    </p>
-                  </div>
+        {/* Principles grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {principles.map((principle, index) => (
+            <motion.div
+              key={principle.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={cn(
+                index === 4 && "md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none"
+              )}
+            >
+              <GlassCard className="h-full group hover:border-white/20 transition-all duration-300">
+                {/* Icon */}
+                <div
+                  className={cn(
+                    "w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform group-hover:scale-110",
+                    principle.color === "cyan" && "bg-brand-cyan/10 text-brand-cyan",
+                    principle.color === "purple" && "bg-brand-purple/10 text-brand-purple",
+                    principle.color === "emerald" && "bg-brand-emerald/10 text-brand-emerald",
+                    principle.color === "amber" && "bg-brand-amber/10 text-brand-amber"
+                  )}
+                >
+                  <principle.icon className="w-6 h-6" />
                 </div>
-              </motion.div>
-            </AnimatePresence>
 
-            {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
-              <div className="flex items-center gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={cn(
-                      "w-2 h-2 rounded-full transition-all duration-300",
-                      index === currentIndex
-                        ? "w-8 bg-brand-cyan"
-                        : "bg-white/30 hover:bg-white/50"
-                    )}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={prevTestimonial}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 text-white/60 hover:text-white hover:bg-white/10 transition-colors"
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={nextTestimonial}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 text-white/60 hover:text-white hover:bg-white/10 transition-colors"
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </GlassCard>
+                {/* Content */}
+                <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-brand-cyan transition-colors">
+                  {principle.title}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  {principle.description}
+                </p>
+              </GlassCard>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <p className="text-white/50 text-sm max-w-2xl mx-auto">
+            These principles have guided me through managing $12M P&L operations, leading 50+ engineers through COVID,
+            and building enterprise platforms worth over $1.5M. They&apos;ll guide how I build technology for your business too.
+          </p>
+        </motion.div>
       </div>
     </section>
   )
