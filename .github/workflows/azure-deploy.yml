@@ -1,0 +1,90 @@
+# =============================================================================
+# CTO Portfolio - Azure App Service Deployment Pipeline
+# =============================================================================
+# Auto-deploys to Azure App Service on push to main
+#
+# Workflow:
+#   1. Push to main → builds Next.js app
+#   2. Deploys to https://cto-portfolio.azurewebsites.net
+# =============================================================================
+
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - 'thoughts/**'
+      - '*.md'
+
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: cto-portfolio
+  NODE_VERSION: '20.x'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Prepare standalone package
+        run: |
+          cp -r .next/static .next/standalone/.next/
+          cp -r public .next/standalone/
+          cd .next/standalone && zip -r ../../deploy.zip .
+
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: deploy.zip
+
+      - name: Wait for startup
+        run: sleep 30
+
+      - name: Health check
+        run: |
+          URL="https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
+          echo "Checking: $URL"
+
+          for i in {1..10}; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$URL/" || echo "000")
+            if [ "$code" = "200" ]; then
+              echo "Site is healthy!"
+              exit 0
+            fi
+            echo "Attempt $i/10: HTTP $code..."
+            sleep 10
+          done
+
+          echo "Health check failed"
+          exit 1
+
+      - name: Summary
+        if: success()
+        run: |
+          echo "### Deployed to Azure" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**URL:** https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net" >> $GITHUB_STEP_SUMMARY
