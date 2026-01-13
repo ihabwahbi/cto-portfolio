@@ -103,10 +103,12 @@ export function Navigation() {
                   </a>
                 ))}
               </div>
-              <Button variant="glow" size="sm">
-                <Download className="w-4 h-4" />
-                Resume
-              </Button>
+              <a href="/IhabWahbi_Resume_CTO.pdf" download>
+                <Button variant="glow" size="sm">
+                  <Download className="w-4 h-4" />
+                  Resume
+                </Button>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -185,10 +187,12 @@ export function Navigation() {
                 </div>
 
                 {/* CTA */}
-                <Button variant="glow" size="lg" className="w-full mt-4">
-                  <Download className="w-5 h-5" />
-                  Download Resume
-                </Button>
+                <a href="/IhabWahbi_Resume_CTO.pdf" download className="w-full mt-4 block">
+                  <Button variant="glow" size="lg" className="w-full">
+                    <Download className="w-5 h-5" />
+                    Download Resume
+                  </Button>
+                </a>
               </nav>
 
               {/* Safe area */}
