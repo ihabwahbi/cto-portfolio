@@ -47,6 +47,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          NEXT_PUBLIC_APPINSIGHTS_KEY: ee0d954e-7bba-4d09-a6b4-b4b5975748b5
 
       - name: Prepare standalone package
         run: |

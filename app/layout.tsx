@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
+import { AnalyticsProvider } from "@/components/providers"
 import "./globals.css"
 
 const inter = Inter({
@@ -15,29 +16,31 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Ihab Wahbi | CTO & Technology Executive",
+  title: "Ihab Wahbi | CTO & Operations Technology Leader",
   description:
-    "Technology executive with 15+ years transforming organizations through innovative engineering leadership, scalable architectures, and high-performing teams.",
+    "Technology executive with 14+ years leading multi-site operations, digital transformation, and high-performing teams. Expert in bridging operations and technology to drive business growth.",
   keywords: [
     "CTO",
     "Chief Technology Officer",
     "Technology Executive",
-    "Engineering Leadership",
-    "VP Engineering",
-    "Tech Leader",
+    "Operations Leadership",
+    "Digital Transformation",
+    "Multi-Site Management",
+    "Dubai",
+    "UAE",
   ],
   authors: [{ name: "Ihab Wahbi" }],
   openGraph: {
-    title: "Ihab Wahbi | CTO & Technology Executive",
+    title: "Ihab Wahbi | CTO & Operations Technology Leader",
     description:
-      "Technology executive with 15+ years transforming organizations through innovative engineering leadership.",
+      "Technology executive with 14+ years leading multi-site operations and digital transformation.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ihab Wahbi | CTO & Technology Executive",
+    title: "Ihab Wahbi | CTO & Operations Technology Leader",
     description:
-      "Technology executive with 15+ years transforming organizations through innovative engineering leadership.",
+      "Technology executive with 14+ years leading multi-site operations and digital transformation.",
   },
 }
 
@@ -49,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-brand-obsidian text-white antialiased">
-        {children}
+        <AnalyticsProvider>{children}</AnalyticsProvider>
       </body>
     </html>
   )

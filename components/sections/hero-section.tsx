@@ -35,8 +35,8 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hero-title mt-8 sm:mt-10 md:mt-12"
           >
-            <span className="gradient-text-white block leading-[1.1]">Where Operations</span>
-            <span className="gradient-text-animated block leading-[1.1]">Meets Innovation</span>
+            <span className="gradient-text-white block leading-[1.1]">Tech Leadership</span>
+            <span className="gradient-text-animated block leading-[1.1]">That Drives Growth</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -46,10 +46,10 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="statement text-white/60 max-w-2xl w-full mx-auto mt-6 sm:mt-8 md:mt-10 text-center px-4"
           >
-            Operations executive turned technology leader with 14+ years building
-            high-performing teams, automating complex workflows, and delivering
-            measurable P&L impact. I don&apos;t just build technology—I understand
-            the business it serves.
+            Technology executive with 14+ years leading multi-site operations,
+            building high-performing teams, and transforming businesses through
+            digital innovation. I bridge the gap between technology and operations
+            to deliver real business results.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -84,10 +84,10 @@ export function HeroSection() {
         <div className="container py-10 sm:py-12 md:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 max-w-5xl mx-auto">
             {[
-              { value: "14+", label: "Years Leading Teams" },
-              { value: "$12M", label: "P&L Accountability" },
-              { value: "50+", label: "Engineers Managed" },
-              { value: "3", label: "AI Products Built" },
+              { value: "14+", label: "Years in Leadership" },
+              { value: "50+", label: "Team Members Led" },
+              { value: "5+", label: "Sites Managed" },
+              { value: "95%", label: "Service Quality" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}

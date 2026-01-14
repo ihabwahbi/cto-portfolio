@@ -16,50 +16,50 @@ import { cn } from "@/lib/utils"
 const metrics = [
   {
     icon: DollarSign,
-    value: 1.5,
-    suffix: "M+",
-    label: "Software Value Delivered",
-    description: "Enterprise platforms built solo",
+    value: 12,
+    suffix: "M",
+    label: "P&L Managed",
+    description: "Full budget & financial accountability",
     color: "cyan",
-  },
-  {
-    icon: Rocket,
-    value: 360,
-    suffix: "K+",
-    label: "Lines of Code Shipped",
-    description: "Production-grade TypeScript & Python",
-    color: "purple",
-  },
-  {
-    icon: Zap,
-    value: 40,
-    suffix: "x",
-    label: "Faster Than Industry",
-    description: "Built $485K platform in 1 week solo",
-    color: "emerald",
-  },
-  {
-    icon: Brain,
-    value: 9,
-    suffix: "",
-    label: "AI Integrations",
-    description: "OpenAI, Claude, DeepSeek & more",
-    color: "amber",
   },
   {
     icon: Users,
     value: 50,
     suffix: "+",
     label: "Team Members Led",
-    description: "Managed through COVID crisis",
-    color: "cyan",
+    description: "Across multiple locations",
+    color: "purple",
   },
   {
     icon: TrendingUp,
-    value: 12,
-    suffix: "M",
-    label: "P&L Accountability",
-    description: "Full financial ownership of operations",
+    value: 44,
+    suffix: "%",
+    label: "Cost Reduction",
+    description: "Inventory days from 160 to 90",
+    color: "emerald",
+  },
+  {
+    icon: Zap,
+    value: 80,
+    suffix: "%",
+    label: "Process Automation",
+    description: "Manual tasks eliminated",
+    color: "amber",
+  },
+  {
+    icon: Rocket,
+    value: 95,
+    suffix: "%",
+    label: "Service Quality",
+    description: "Consistent delivery across sites",
+    color: "cyan",
+  },
+  {
+    icon: Brain,
+    value: 0,
+    suffix: "",
+    label: "Safety Incidents",
+    description: "Zero incidents through culture change",
     color: "purple",
   },
 ]
@@ -127,12 +127,12 @@ export function AchievementsSection() {
       <div className="container">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="label-text mb-4 block">Impact & Achievements</span>
+          <span className="label-text mb-4 block">Track Record</span>
           <h2 className="section-title gradient-text-white mb-6">
-            Real <span className="gradient-text">Results</span>
+            Proven <span className="gradient-text">Impact</span>
           </h2>
           <p className="statement text-white/60">
-            Actual outcomes from my career—every number verified and documented.
+            Measurable business outcomes from my leadership journey.
           </p>
         </div>
 
@@ -161,24 +161,24 @@ export function AchievementsSection() {
         >
           <GlassCard padding="xl">
             <h3 className="text-xl font-semibold text-white text-center mb-8">
-              Enterprise Platforms I&apos;ve Built
+              Key Transformation Initiatives
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
-                  title: "Cost Management Hub",
-                  org: "195K LOC • $1.1M-$1.5M value",
-                  year: "Built solo in 2 months",
+                  title: "Cost Intelligence Platform",
+                  org: "Real-time P&L visibility",
+                  year: "Reduced reporting time by 80%",
                 },
                 {
-                  title: "Datacenter Platform",
-                  org: "167K LOC • Full DCIM + AI",
-                  year: "Built solo in 1 week",
+                  title: "Operations Dashboard",
+                  org: "Multi-site performance tracking",
+                  year: "Enabled data-driven decisions",
                 },
                 {
-                  title: "AquaPulse AI System",
-                  org: "Multi-agent demand planning",
-                  year: "Deployed at Global HQ",
+                  title: "Demand Forecasting System",
+                  org: "AI-powered planning",
+                  year: "35% more accurate forecasts",
                 },
               ].map((project) => (
                 <div

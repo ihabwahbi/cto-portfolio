@@ -8,71 +8,71 @@ import { cn } from "@/lib/utils"
 
 const experiences = [
   {
-    company: "SLB (Global Energy Leader)",
+    company: "SLB (Fortune 500)",
     logo: "SLB",
     role: "Resource Strategy & Analytics Manager",
     period: "2025 - Present",
     location: "Perth, Australia",
     description:
-      "Leading digital transformation of financial operations through AI-powered analytics. Built enterprise cost intelligence platform from scratch, enabling real-time P&L visibility and predictive decision-making across the region.",
+      "Leading digital transformation across regional operations. Built real-time cost intelligence and reporting systems that enable leadership to make faster, data-driven decisions across all business lines.",
     achievements: [
-      "Built AI-powered P&L forecasting engine predicting costs 3-12 months ahead",
-      "Architected full-stack Cost Management Hub with real-time dashboards",
-      "Reduced manual reporting effort by 80% through intelligent automation",
-      "Established weekly data-driven decision cadence for senior leadership",
+      "Created real-time dashboards replacing 30-day manual reporting cycles",
+      "Established weekly data-driven decision framework for senior leadership",
+      "Reduced manual reporting effort by 80% through process automation",
+      "Implemented cost forecasting for proactive budget management",
     ],
-    technologies: ["Python", "Next.js", "PostgreSQL", "Power BI", "Azure", "Machine Learning"],
+    technologies: ["Dashboards", "Automation", "Forecasting", "Cost Control"],
     color: "cyan",
   },
   {
     company: "SLB (Global HQ)",
     logo: "SLB",
-    role: "Product Development Lead, AI Systems",
+    role: "Strategic Planning & Technology Lead",
     period: "2023 - 2024",
     location: "Paris, France",
     description:
-      "Selected to lead AI product innovation at global headquarters. Designed and built intelligent automation systems that transformed how the company forecasts demand and manages resources across 120+ countries.",
+      "Selected for global headquarters role to lead technology-driven planning initiatives. Redesigned enterprise systems affecting operations across 120+ countries, improving forecast accuracy and resource allocation.",
     achievements: [
-      "Built 'AquaPulse' - multi-agent AI system for demand planning",
-      "Achieved 20-35% improvement in forecast accuracy over legacy methods",
-      "Led SAP IBP architecture overhaul affecting $50M+ enterprise system",
-      "Authored strategic roadmap adopted by global executive leadership",
+      "Achieved 35% improvement in demand forecast accuracy",
+      "Led enterprise system architecture overhaul across global operations",
+      "Authored strategic roadmap adopted by executive leadership",
+      "Streamlined planning workflows reducing cycle time significantly",
     ],
-    technologies: ["Python", "LangGraph", "OpenAI API", "SAP IBP", "Neo4j", "Google Cloud"],
+    technologies: ["Strategic Planning", "Enterprise Systems", "Change Management"],
     color: "purple",
   },
   {
     company: "SLB",
     logo: "SLB",
-    role: "Materials & Supply Chain Lead",
+    role: "Supply Chain & Inventory Manager",
     period: "2022 - 2023",
     location: "Adelaide, Australia",
     description:
-      "First person to establish this regional function. Transformed manual supply chain operations into automated, data-driven systems while leading critical enterprise system migration across Australia, NZ, and Papua New Guinea.",
+      "Established and led supply chain function across Australia, NZ, and PNG. Transformed manual operations into automated, data-driven systems while managing critical enterprise system migration with zero disruption.",
     achievements: [
-      "Reduced inventory days-on-hand from 160 to 90 days (44% improvement)",
-      "Built AI chatbot for supply chain queries, cutting training time by 70%",
-      "Led Lawson-to-SAP migration ensuring zero operational disruption",
-      "Exceeded $22M annual revenue target through predictive resource planning",
+      "Reduced inventory holding from 160 to 90 days (44% cost saving)",
+      "Led major system migration with zero operational disruption",
+      "Exceeded $22M revenue target through better resource planning",
+      "Created self-service tools reducing staff training time by 70%",
     ],
-    technologies: ["Python", "SAP S/4HANA", "Power BI", "Azure Functions", "SvelteKit"],
+    technologies: ["Supply Chain", "Inventory", "ERP Migration", "Process Design"],
     color: "emerald",
   },
   {
     company: "SLB",
     logo: "SLB",
-    role: "Field Service Manager",
+    role: "Operations Manager",
     period: "2020 - 2022",
-    location: "South Australia (Cooper Basin)",
+    location: "South Australia",
     description:
-      "Full P&L accountability for $12M annual operation during COVID-19 crisis. Led 50+ engineers through unprecedented challenges while scaling operations and maintaining exceptional safety and service quality standards.",
+      "Full P&L accountability for $12M annual operation across multiple sites. Led 50+ team members through COVID crisis while scaling operations and maintaining exceptional safety and service quality standards.",
     achievements: [
-      "Managed full P&L through COVID - strategic downsizing then rapid scale-up",
-      "Tripled truck operations, growing revenue from $4M to $8.5M annually",
-      "Achieved ZERO safety incidents (down from 96% TRIF) through culture change",
-      "Maintained 95% service quality despite interstate travel restrictions",
+      "Managed $12M P&L through crisis - strategic downsizing then rapid scale-up",
+      "Tripled operations capacity, growing revenue from $4M to $8.5M",
+      "Achieved ZERO safety incidents through culture transformation",
+      "Maintained 95% service quality despite major logistical constraints",
     ],
-    technologies: ["Operations Management", "P&L", "Team Leadership", "Crisis Management"],
+    technologies: ["P&L Management", "Multi-Site Ops", "Team Leadership", "Crisis Response"],
     color: "amber",
   },
 ]
@@ -93,11 +93,11 @@ export function ExperienceSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="label-text mb-4 block">Experience</span>
           <h2 className="section-title gradient-text-white mb-6">
-            From Field Operations <br />
-            <span className="gradient-text">To Global Tech Leadership</span>
+            From Operations <br />
+            <span className="gradient-text">To Executive Leadership</span>
           </h2>
           <p className="statement text-white/60">
-            14+ years progressing from frontline operations to building AI systems at global headquarters—with P&L accountability at every level.
+            14+ years progressing through operations, supply chain, and technology leadership at a Fortune 500 company.
           </p>
         </div>
 

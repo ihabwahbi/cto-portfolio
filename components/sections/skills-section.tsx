@@ -13,62 +13,62 @@ import { cn } from "@/lib/utils"
 
 const skillCategories = [
   {
-    title: "Operations & P&L",
+    title: "Strategic Leadership",
     icon: TrendingUp,
     color: "cyan",
     skills: [
-      { name: "P&L Management & Accountability", level: 95 },
-      { name: "Cost Control & Optimization", level: 94 },
-      { name: "Supply Chain & Inventory", level: 92 },
-      { name: "Crisis & Change Management", level: 90 },
+      { name: "P&L Management & Budgeting", level: 95 },
+      { name: "Strategic Planning & Execution", level: 94 },
+      { name: "Vendor & Contract Management", level: 92 },
+      { name: "Risk Assessment & Mitigation", level: 90 },
     ],
   },
   {
-    title: "Team Leadership",
+    title: "Team & Operations",
     icon: Users,
     color: "purple",
     skills: [
-      { name: "Building & Scaling Teams", level: 96 },
-      { name: "Cross-functional Collaboration", level: 94 },
-      { name: "Mentoring & Staff Development", level: 92 },
-      { name: "Remote & Multi-site Management", level: 90 },
+      { name: "Building & Developing Teams", level: 96 },
+      { name: "Multi-Site Operations Management", level: 94 },
+      { name: "Staff Training & Performance", level: 92 },
+      { name: "Cross-Functional Collaboration", level: 90 },
     ],
   },
   {
-    title: "Data & Business Intelligence",
+    title: "Business Intelligence",
     icon: Brain,
     color: "emerald",
     skills: [
-      { name: "Dashboards & Real-time Reporting", level: 95 },
-      { name: "Predictive Analytics & Forecasting", level: 92 },
-      { name: "KPI Tracking & Performance Metrics", level: 90 },
+      { name: "Real-Time Dashboards & Reporting", level: 95 },
+      { name: "Forecasting & Demand Planning", level: 92 },
+      { name: "KPI Design & Performance Tracking", level: 90 },
       { name: "Data-Driven Decision Making", level: 94 },
     ],
   },
   {
-    title: "Technology & Automation",
+    title: "Digital Transformation",
     icon: Workflow,
     color: "amber",
     skills: [
-      { name: "AI & Intelligent Automation", level: 94 },
-      { name: "Full-Stack App Development", level: 92 },
-      { name: "Enterprise System Integration", level: 90 },
-      { name: "Cloud & Infrastructure", level: 88 },
+      { name: "Process Automation & Efficiency", level: 94 },
+      { name: "System Selection & Integration", level: 92 },
+      { name: "Digital Customer Experience", level: 88 },
+      { name: "Technology Roadmap Planning", level: 90 },
     ],
   },
 ]
 
 const technologies = [
   // Business & Analytics
-  "Power BI", "SAP", "Excel & Data Analysis",
-  // Development
-  "Python", "TypeScript", "React", "Next.js",
-  // AI & Automation
-  "AI/ML Systems", "OpenAI", "Process Automation",
+  "Power BI", "Dashboards", "Excel",
+  // Operations
+  "POS Systems", "Inventory Management", "ERP",
+  // Digital
+  "CRM", "Process Automation", "AI Assistants",
   // Cloud & Infrastructure
-  "Azure", "Google Cloud", "PostgreSQL",
-  // Enterprise
-  "ERP Integration", "API Development", "Mobile Apps",
+  "Cloud Platforms", "Mobile Apps", "Web Applications",
+  // Communication
+  "Microsoft 365", "Slack/Teams", "Project Management",
 ]
 
 export function SkillsSection() {
@@ -87,10 +87,10 @@ export function SkillsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="label-text mb-4 block">Skills & Expertise</span>
           <h2 className="section-title gradient-text-white mb-6">
-            Business-First <span className="gradient-text">Technology</span>
+            Leadership That <span className="gradient-text">Delivers Results</span>
           </h2>
           <p className="statement text-white/60">
-            I build technology that drives real business outcomes—lower costs, better decisions, and scalable operations.
+            Combining operational experience with technology expertise to drive efficiency, growth, and customer satisfaction.
           </p>
         </div>
 
@@ -163,7 +163,7 @@ export function SkillsSection() {
           className="text-center"
         >
           <h3 className="text-lg font-semibold text-white/80 mb-6">
-            Tools I Use to Deliver Results
+            Platforms & Technologies I Work With
           </h3>
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {technologies.map((tech, index) => (

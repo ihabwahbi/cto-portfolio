@@ -10,8 +10,8 @@ const highlights = [
   {
     icon: Briefcase,
     title: "Current Focus",
-    value: "AI & Operations",
-    description: "Building intelligent systems at SLB",
+    value: "Tech Leadership",
+    description: "Digital transformation & team building",
   },
   {
     icon: GraduationCap,
@@ -29,7 +29,7 @@ const highlights = [
     icon: Globe,
     title: "Languages",
     value: "English & Arabic",
-    description: "Native in both",
+    description: "Native fluency in both",
   },
 ]
 
@@ -55,8 +55,8 @@ export function AboutSection() {
             About Me
           </motion.span>
           <h2 className="section-title gradient-text-white mb-6">
-            Operations DNA, <br />
-            <span className="gradient-text">Technology Mindset</span>
+            Operations Background, <br />
+            <span className="gradient-text">Technology Leader</span>
           </h2>
         </div>
 
@@ -64,18 +64,18 @@ export function AboutSection() {
           {/* Bio */}
           <div className="space-y-6">
             <p className="body-lg text-white/80 leading-relaxed">
-              I started my career on the front lines—running field operations in Iraq,
-              managing crews in remote locations, and learning what it takes to keep
-              complex operations running smoothly. That foundation taught me something
-              no classroom could: technology only matters if it solves real problems
-              for real people.
+              I started my career on the front lines—managing multi-site operations,
+              coordinating remote teams across multiple locations, and learning what
+              it takes to deliver consistent service quality at scale. That foundation
+              taught me something no classroom could: technology only matters if it
+              solves real problems for the people using it.
             </p>
             <p className="body-lg text-white/60 leading-relaxed">
-              Over 14 years, I progressed from field engineer to leading AI product
-              development at a Fortune 500 global headquarters. Along the way, I&apos;ve
-              held full P&L accountability for $12M operations, managed 50+ engineers
-              through the COVID crisis, and built AI systems that cut costs and
-              accelerated decision-making.
+              Over 14 years, I progressed from operations to technology leadership at
+              a Fortune 500 company. I&apos;ve transformed manual processes into
+              automated systems, built real-time dashboards for decision-making, and
+              led digital transformation initiatives that reduced costs while improving
+              customer service.
             </p>
             <p className="body-lg text-white/60 leading-relaxed">
               With Iraqi heritage and native Arabic fluency, I understand the Middle
@@ -90,11 +90,11 @@ export function AboutSection() {
               </h3>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "P&L Accountability",
+                  "Multi-Site Operations",
                   "Team Development",
-                  "Operational Excellence",
-                  "AI & Automation",
-                  "Supply Chain Expertise",
+                  "Digital Transformation",
+                  "Cost Optimization",
+                  "Supply Chain & Inventory",
                 ].map((value) => (
                   <span
                     key={value}

@@ -8,15 +8,15 @@ import { cn } from "@/lib/utils"
 
 const projects = [
   {
-    title: "TrueSpend Cost Intelligence",
-    category: "Financial Platform",
+    title: "Enterprise Cost Management Platform",
+    category: "Business Intelligence",
     description:
-      "Built a complete enterprise cost management platform solo in 2 months. Real-time P&L tracking, AI-powered forecasting, and automated variance reporting.",
-    impact: "$1.1M-$1.5M platform value",
-    technologies: ["Next.js", "TypeScript", "Python", "OpenAI", "Azure"],
+      "Complete cost intelligence system with real-time P&L tracking, automated reporting, and predictive forecasting. Replaced manual spreadsheet processes with instant visibility.",
+    impact: "80% faster reporting",
+    technologies: ["Dashboards", "Automation", "Cloud", "Analytics"],
     metrics: [
-      { label: "Lines of Code", value: "195K" },
-      { label: "Build Time", value: "2 months" },
+      { label: "Report Time", value: "-80%" },
+      { label: "Visibility", value: "Real-time" },
     ],
     featured: true,
     color: "cyan",
@@ -24,15 +24,15 @@ const projects = [
     githubUrl: "https://github.com/ihabwahbi/cost-management",
   },
   {
-    title: "T964 Datacenter Platform",
-    category: "Full Business System",
+    title: "Multi-Site Operations Platform",
+    category: "Business System",
     description:
-      "Complete enterprise platform built solo in ONE WEEK: client portal, admin panel, CRM, billing, AI chat advisor, and bilingual Arabic/English support.",
-    impact: "$485K-$695K platform value",
-    technologies: ["Next.js", "React", "tRPC", "PostgreSQL", "AI"],
+      "End-to-end business platform with client portal, CRM, billing, and bilingual Arabic/English support. Demonstrates ability to deliver complete business solutions rapidly.",
+    impact: "Full digital operations",
+    technologies: ["Web Platform", "CRM", "Billing", "Mobile-Ready"],
     metrics: [
-      { label: "Lines of Code", value: "167K" },
-      { label: "Build Time", value: "1 week" },
+      { label: "Modules", value: "8+" },
+      { label: "Languages", value: "AR/EN" },
     ],
     featured: true,
     color: "purple",
@@ -40,30 +40,30 @@ const projects = [
     githubUrl: "https://github.com/ihabwahbi/t964-datacenter",
   },
   {
-    title: "AquaPulse Multi-Agent AI",
-    category: "AI System",
+    title: "Demand Forecasting System",
+    category: "Planning Tool",
     description:
-      "Production-grade AI system with multiple specialized agents for demand planning, inventory queries, and operations support. Deployed at global HQ.",
-    impact: "20-35% better forecasts",
-    technologies: ["Python", "LangGraph", "Neo4j", "OpenAI"],
+      "Intelligent forecasting system that significantly improved prediction accuracy over legacy methods. Helps leadership plan resources and manage inventory proactively.",
+    impact: "35% more accurate",
+    technologies: ["AI/ML", "Analytics", "Integration"],
     metrics: [
-      { label: "Agent Types", value: "5" },
-      { label: "Accuracy Gain", value: "35%" },
+      { label: "Accuracy", value: "+35%" },
+      { label: "Planning", value: "Proactive" },
     ],
     featured: false,
     color: "emerald",
     githubUrl: "https://github.com/ihabwahbi/aquapulse-langgraph",
   },
   {
-    title: "Operations AI Chatbot",
-    category: "Staff Tool",
+    title: "Staff Self-Service Assistant",
+    category: "Operations Tool",
     description:
-      "AI-powered chatbot for operations staff to query inventory, supply chain status, and planning data using natural language instead of complex systems.",
-    impact: "70% faster training",
-    technologies: ["SvelteKit", "Python", "OpenAI", "Azure"],
+      "Easy-to-use tool allowing staff to query inventory and supply chain data using natural language. Reduced training time and improved information access across teams.",
+    impact: "70% faster onboarding",
+    technologies: ["AI Chat", "Self-Service", "Mobile"],
     metrics: [
-      { label: "Training Time", value: "-70%" },
-      { label: "Query Speed", value: "<200ms" },
+      { label: "Training", value: "-70%" },
+      { label: "Access", value: "Instant" },
     ],
     featured: false,
     color: "amber",
@@ -85,12 +85,12 @@ export function ProjectsSection() {
       <div className="container">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="label-text mb-4 block">What I&apos;ve Built</span>
+          <span className="label-text mb-4 block">Solutions Delivered</span>
           <h2 className="section-title gradient-text-white mb-6">
-            Systems That <span className="gradient-text">Actually Ship</span>
+            Technology That <span className="gradient-text">Drives Business</span>
           </h2>
           <p className="statement text-white/60">
-            Real platforms I&apos;ve built solo—production-grade, enterprise-ready, and fast.
+            Real platforms delivering measurable business value—from concept to production.
           </p>
         </div>
 

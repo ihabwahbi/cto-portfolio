@@ -17,35 +17,35 @@ const principles = [
     icon: Target,
     title: "Business First, Technology Second",
     description:
-      "I don't build tech for tech's sake. Every system I create must drive revenue, cut costs, or improve operations. If it doesn't move the business forward, it doesn't get built.",
+      "Technology must drive revenue, cut costs, or improve customer experience. If it doesn't move the business forward, it doesn't get built.",
     color: "cyan",
   },
   {
     icon: Users,
     title: "Build Teams, Not Just Systems",
     description:
-      "Great technology is built by great people. I invest heavily in growing talent, creating cultures of ownership, and ensuring my teams can thrive long after I've moved on.",
+      "Great results come from great people. I invest heavily in growing talent, creating cultures of ownership, and building teams that thrive long after I've moved on.",
     color: "purple",
   },
   {
     icon: BarChart3,
     title: "Data-Driven Decisions",
     description:
-      "I replace gut feelings with dashboards and forecasts. Every major decision should be backed by data—whether it's inventory levels, cost projections, or team performance.",
+      "I replace gut feelings with dashboards and KPIs. Every major decision should be backed by data—whether it's inventory, costs, staff performance, or customer satisfaction.",
     color: "emerald",
   },
   {
     icon: Code2,
     title: "Hands-On When It Matters",
     description:
-      "I'm not a manager who's forgotten how to build. I can architect a system, write the code, and ship it to production. When things get critical, I roll up my sleeves.",
+      "I'm not a manager disconnected from reality. I understand the technology, can evaluate solutions properly, and roll up my sleeves when things get critical.",
     color: "amber",
   },
   {
     icon: Compass,
-    title: "Operations DNA",
+    title: "Operations Experience",
     description:
-      "I've run P&L, managed field crews, survived crises. I understand that technology serves operations, not the other way around. This perspective shapes everything I build.",
+      "I've managed P&L, led frontline teams, and navigated crises. I understand that technology serves operations, not the other way around.",
     color: "cyan",
   },
 ]
@@ -66,10 +66,10 @@ export function TestimonialsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="label-text mb-4 block">Leadership Philosophy</span>
           <h2 className="section-title gradient-text-white mb-6">
-            My Approach to <span className="gradient-text">Technology</span>
+            My Approach to <span className="gradient-text">Leadership</span>
           </h2>
           <p className="statement text-white/60">
-            How I think about building technology, leading teams, and delivering business value.
+            How I think about leading teams, implementing technology, and delivering business value.
           </p>
         </div>
 
@@ -121,8 +121,8 @@ export function TestimonialsSection() {
           className="mt-12 text-center"
         >
           <p className="text-white/50 text-sm max-w-2xl mx-auto">
-            These principles have guided me through managing $12M P&L operations, leading 50+ engineers through COVID,
-            and building enterprise platforms worth over $1.5M. They&apos;ll guide how I build technology for your business too.
+            These principles have guided me through every leadership role—from multi-site operations
+            to enterprise technology initiatives. They&apos;ll guide how I lead your technology department too.
           </p>
         </motion.div>
       </div>
