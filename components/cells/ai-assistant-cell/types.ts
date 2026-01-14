@@ -34,8 +34,9 @@ export interface SuggestionChip {
 }
 
 export const DEFAULT_SUGGESTIONS: SuggestionChip[] = [
-  { label: "Leadership style", message: "What's Ihab's leadership style?" },
-  { label: "Cloud experience", message: "Tell me about his cloud and technology experience" },
-  { label: "Biggest achievement", message: "What's his biggest professional achievement?" },
-  { label: "Why Dubai?", message: "Why is Ihab relocating to Dubai?" },
+  { label: "Who's Ihab?", message: "Who is Ihab and what makes him different from other candidates?" },
+  { label: "Prove it", message: "Show me real proof of what you've actually built - not just talk" },
+  { label: "How fast can you ship?", message: "How quickly can Ihab actually deliver working software?" },
+  { label: "Why CTO for restaurants?", message: "Why would Ihab be a good CTO for a restaurant or F&B business?" },
+  { label: "Do you know Yaba?", message: "Do you know anything about Yaba Restaurant or Chef Shaheen?" },
 ]
