@@ -6,6 +6,7 @@ import { Menu, X, Download, Github, Linkedin, Mail, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui"
 import { useIsDesktop } from "@/hooks"
+import { useAnalytics } from "@/components/providers"
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -27,6 +28,19 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const isDesktop = useIsDesktop()
+  const { trackDownload, trackExternalLink, trackClick } = useAnalytics()
+
+  const handleResumeDownload = () => {
+    trackDownload("IhabWahbi_Resume_CTO.pdf")
+  }
+
+  const handleSocialClick = (linkName: string, href: string) => {
+    trackExternalLink(href, linkName)
+  }
+
+  const handleNavClick = (label: string) => {
+    trackClick(`Navigation: ${label}`)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +86,7 @@ export function Navigation() {
                 <a
                   key={link.href}
                   href={link.href}
+                  onClick={() => handleNavClick(link.label)}
                   className={cn(
                     "px-4 py-2 text-sm font-medium rounded-lg",
                     "text-white/70 hover:text-white",
@@ -91,6 +106,7 @@ export function Navigation() {
                   <a
                     key={link.label}
                     href={link.href}
+                    onClick={() => handleSocialClick(link.label, link.href)}
                     className={cn(
                       "w-9 h-9 rounded-lg flex items-center justify-center",
                       "text-white/50 hover:text-white",
@@ -103,7 +119,7 @@ export function Navigation() {
                   </a>
                 ))}
               </div>
-              <a href="/IhabWahbi_Resume_CTO.pdf" download>
+              <a href="/IhabWahbi_Resume_CTO.pdf" download onClick={handleResumeDownload}>
                 <Button variant="glow" size="sm">
                   <Download className="w-4 h-4" />
                   Resume
@@ -160,7 +176,10 @@ export function Navigation() {
                     key={link.href}
                     href={link.href}
                     className="flex items-center justify-between px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/5 transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => {
+                      handleNavClick(link.label)
+                      setIsMobileMenuOpen(false)
+                    }}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
@@ -178,6 +197,7 @@ export function Navigation() {
                     <a
                       key={link.label}
                       href={link.href}
+                      onClick={() => handleSocialClick(link.label, link.href)}
                       className="w-12 h-12 rounded-xl flex items-center justify-center text-white/50 hover:text-white hover:bg-white/5 transition-colors"
                       aria-label={link.label}
                     >
@@ -187,7 +207,7 @@ export function Navigation() {
                 </div>
 
                 {/* CTA */}
-                <a href="/IhabWahbi_Resume_CTO.pdf" download className="w-full mt-4 block">
+                <a href="/IhabWahbi_Resume_CTO.pdf" download onClick={handleResumeDownload} className="w-full mt-4 block">
                   <Button variant="glow" size="lg" className="w-full">
                     <Download className="w-5 h-5" />
                     Download Resume

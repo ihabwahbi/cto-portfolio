@@ -20,6 +20,7 @@ import {
 } from "lucide-react"
 import { GlassCard, Button } from "@/components/ui"
 import { useAnimateIn } from "@/hooks"
+import { useAnalytics } from "@/components/providers"
 import { cn } from "@/lib/utils"
 
 const socialLinks = [
@@ -143,7 +144,9 @@ interface FormData {
 export function ContactSection() {
   const { ref, isVisible, animationClass } = useAnimateIn<HTMLElement>({
     threshold: 0.2,
+    trackAs: "Contact",
   })
+  const { trackEvent, trackExternalLink } = useAnalytics()
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -172,6 +175,12 @@ export function ContactSection() {
       if (!response.ok) {
         throw new Error(data.error || "Failed to send message")
       }
+
+      // Track successful form submission
+      trackEvent("ContactFormSubmit", {
+        hasCompany: !!formData.company,
+        hasPhone: !!formData.phone,
+      })
 
       setStatus("success")
       setFormData({ name: "", email: "", company: "", phone: "", message: "" })
@@ -241,6 +250,7 @@ export function ContactSection() {
                   <a
                     key={link.label}
                     href={link.href}
+                    onClick={() => trackExternalLink(link.href, `Contact: ${link.label}`)}
                     className={cn(
                       "w-12 h-12 rounded-xl flex items-center justify-center",
                       "bg-white/5 text-white/60 transition-all duration-200",

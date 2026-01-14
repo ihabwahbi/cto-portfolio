@@ -1,10 +1,26 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { motion } from "motion/react"
-import { ArrowDown, Sparkles } from "lucide-react"
+import { ArrowDown, FileText } from "lucide-react"
 import { Button } from "@/components/ui"
+import { SentientOrb } from "@/components/ai"
+import { useAIAssistant } from "@/contexts/ai-assistant-context"
+import { useAnalytics } from "@/components/providers"
 
 export function HeroSection() {
+  const { openChatWithScroll } = useAIAssistant()
+  const { trackSectionView, trackClick } = useAnalytics()
+  const hasTracked = useRef(false)
+
+  // Track Hero section view on mount
+  useEffect(() => {
+    if (!hasTracked.current) {
+      hasTracked.current = true
+      trackSectionView("Hero")
+    }
+  }, [trackSectionView])
+
   return (
     <section
       id="hero"
@@ -52,24 +68,33 @@ export function HeroSection() {
             to deliver real business results.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Now with AI Orb as primary */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mt-10 sm:mt-12 md:mt-14"
+            className="flex flex-col items-center gap-6 mt-10 sm:mt-12 md:mt-14"
           >
-            <a href="#experience">
-              <Button variant="glow" size="xl" className="group">
-                <Sparkles className="w-5 h-5 transition-transform group-hover:rotate-12" />
-                See My Track Record
-              </Button>
-            </a>
-            <a href="#contact">
-              <Button variant="outline" size="xl">
-                Let&apos;s Talk
-              </Button>
-            </a>
+            {/* The Sentient Orb - Primary CTA */}
+            <SentientOrb
+              onClick={openChatWithScroll}
+              className="w-full max-w-xs"
+            />
+
+            {/* Secondary CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
+              <a href="#experience" onClick={() => trackClick("Hero: View Experience")}>
+                <Button variant="outline" size="lg" className="group">
+                  <FileText className="w-4 h-4 transition-transform group-hover:scale-110" />
+                  View Experience
+                </Button>
+              </a>
+              <a href="#contact" onClick={() => trackClick("Hero: Let's Connect")}>
+                <Button variant="ghost" size="lg">
+                  Let&apos;s Connect
+                </Button>
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>

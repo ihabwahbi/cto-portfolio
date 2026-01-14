@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { useAnalytics } from "@/components/providers"
 
 interface UseAnimateInOptions {
   threshold?: number
@@ -8,6 +9,7 @@ interface UseAnimateInOptions {
   once?: boolean
   exitDelay?: number
   animationDuration?: number
+  trackAs?: string // Optional: track this section view in analytics
 }
 
 export function useAnimateIn<T extends HTMLElement = HTMLDivElement>(
@@ -19,6 +21,7 @@ export function useAnimateIn<T extends HTMLElement = HTMLDivElement>(
     once = false,
     exitDelay = 50,
     animationDuration = 1000,
+    trackAs,
   } = options
 
   const ref = useRef<T>(null)
@@ -26,6 +29,8 @@ export function useAnimateIn<T extends HTMLElement = HTMLDivElement>(
   const [animationState, setAnimationState] = useState<
     "idle" | "animating" | "complete"
   >("idle")
+  const hasTracked = useRef(false)
+  const { trackSectionView } = useAnalytics()
 
   useEffect(() => {
     const element = ref.current
@@ -36,6 +41,12 @@ export function useAnimateIn<T extends HTMLElement = HTMLDivElement>(
         if (entry.isIntersecting) {
           setAnimationState("animating")
           setIsVisible(true)
+
+          // Track section view (only once per session)
+          if (trackAs && !hasTracked.current) {
+            hasTracked.current = true
+            trackSectionView(trackAs)
+          }
 
           const timer = setTimeout(() => {
             setAnimationState("complete")
@@ -60,7 +71,7 @@ export function useAnimateIn<T extends HTMLElement = HTMLDivElement>(
 
     observer.observe(element)
     return () => observer.unobserve(element)
-  }, [threshold, rootMargin, once, exitDelay, animationDuration])
+  }, [threshold, rootMargin, once, exitDelay, animationDuration, trackAs, trackSectionView])
 
   const animationClass =
     animationState === "animating"

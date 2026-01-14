@@ -116,6 +116,7 @@ function MetricCard({
 export function AchievementsSection() {
   const { ref, isVisible, animationClass } = useAnimateIn<HTMLElement>({
     threshold: 0.2,
+    trackAs: "Achievements",
   })
 
   return (

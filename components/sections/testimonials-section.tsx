@@ -61,6 +61,7 @@ const principles = [
 export function TestimonialsSection() {
   const { ref, isVisible, animationClass } = useAnimateIn<HTMLElement>({
     threshold: 0.2,
+    trackAs: "Leadership Philosophy",
   })
 
   return (

@@ -74,6 +74,7 @@ const technologies = [
 export function SkillsSection() {
   const { ref, isVisible, animationClass } = useAnimateIn<HTMLElement>({
     threshold: 0.1,
+    trackAs: "Skills",
   })
 
   return (

@@ -80,6 +80,7 @@ const experiences = [
 export function ExperienceSection() {
   const { ref, isVisible, animationClass } = useAnimateIn<HTMLElement>({
     threshold: 0.1,
+    trackAs: "Experience",
   })
 
   return (

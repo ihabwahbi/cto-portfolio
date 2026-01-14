@@ -74,6 +74,7 @@ const projects = [
 export function ProjectsSection() {
   const { ref, isVisible, animationClass } = useAnimateIn<HTMLElement>({
     threshold: 0.1,
+    trackAs: "Projects",
   })
 
   return (

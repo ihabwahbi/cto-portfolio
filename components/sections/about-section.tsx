@@ -3,7 +3,9 @@
 import { motion } from "motion/react"
 import { Briefcase, GraduationCap, MapPin, Globe } from "lucide-react"
 import { GlassCard } from "@/components/ui"
+import { AITriggerCard } from "@/components/ai"
 import { useAnimateIn } from "@/hooks"
+import { useAIAssistant } from "@/contexts/ai-assistant-context"
 import { cn } from "@/lib/utils"
 
 const highlights = [
@@ -36,7 +38,9 @@ const highlights = [
 export function AboutSection() {
   const { ref, isVisible, animationClass } = useAnimateIn<HTMLElement>({
     threshold: 0.2,
+    trackAs: "About",
   })
+  const { openChat } = useAIAssistant()
 
   return (
     <section
@@ -108,30 +112,39 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Highlight cards */}
-          <div className="grid grid-cols-2 gap-4">
-            {highlights.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <GlassCard padding="sm" className="h-full">
-                  <div className="w-10 h-10 rounded-xl bg-brand-cyan/10 flex items-center justify-center mb-4">
-                    <item.icon className="w-5 h-5 text-brand-cyan" />
-                  </div>
-                  <p className="text-xs text-white/40 uppercase tracking-wider mb-1.5">
-                    {item.title}
-                  </p>
-                  <p className="text-lg font-semibold text-white mb-1.5">
-                    {item.value}
-                  </p>
-                  <p className="text-sm text-white/50">{item.description}</p>
-                </GlassCard>
-              </motion.div>
-            ))}
+          {/* Highlight cards + AI Card */}
+          <div className="space-y-4">
+            {/* Standard highlight cards - 2x2 grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {highlights.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <GlassCard padding="sm" className="h-full">
+                    <div className="w-10 h-10 rounded-xl bg-brand-cyan/10 flex items-center justify-center mb-4">
+                      <item.icon className="w-5 h-5 text-brand-cyan" />
+                    </div>
+                    <p className="text-xs text-white/40 uppercase tracking-wider mb-1.5">
+                      {item.title}
+                    </p>
+                    <p className="text-lg font-semibold text-white mb-1.5">
+                      {item.value}
+                    </p>
+                    <p className="text-sm text-white/50">{item.description}</p>
+                  </GlassCard>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* AI Trigger Card - Full width below the grid */}
+            <AITriggerCard
+              onClick={openChat}
+              isAwakened={isVisible}
+            />
           </div>
         </div>
       </div>
