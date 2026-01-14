@@ -91,11 +91,10 @@ export const ChatInput = forwardRef<ChatInputHandle, ChatInputProps>(
             className={cn(
               "flex-1 bg-transparent resize-none",
               "text-sm text-white placeholder:text-white/40",
-              "focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0",
-              "outline-none ring-0",
               "disabled:opacity-50 disabled:cursor-not-allowed",
               "min-h-[24px] max-h-[120px]"
             )}
+            style={{ outline: "none", boxShadow: "none" }}
           />
 
           {/* Send/Stop button */}
