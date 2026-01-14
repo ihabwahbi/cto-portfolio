@@ -27,11 +27,34 @@ interface GeoData {
   city: string | null
 }
 
+// Clean IP address - remove port and handle IPv6-mapped IPv4
+function cleanIP(ip: string): string {
+  // Handle IPv6-mapped IPv4 (::ffff:1.2.3.4)
+  if (ip.startsWith("::ffff:")) {
+    ip = ip.substring(7)
+  }
+  // Remove port from IPv4 (1.2.3.4:port)
+  if (ip.includes(":") && !ip.includes("::")) {
+    ip = ip.split(":")[0]
+  }
+  // Remove port from IPv6 with brackets ([::1]:port)
+  if (ip.startsWith("[")) {
+    ip = ip.replace(/^\[|\]:\d+$/g, "")
+  }
+  return ip.trim()
+}
+
 // Lookup geolocation from IP address
 async function getGeoFromIP(ip: string): Promise<GeoData> {
+  // Clean the IP first
+  ip = cleanIP(ip)
+
   // Skip lookup for localhost/private IPs
+  // 100.64.0.0/10 is Azure's internal network (CGNAT range)
   if (ip === "unknown" || ip.startsWith("127.") || ip.startsWith("10.") ||
-      ip.startsWith("192.168.") || ip.startsWith("::1")) {
+      ip.startsWith("192.168.") || ip.startsWith("172.16.") ||
+      ip.startsWith("100.64.") || ip.startsWith("100.65.") ||
+      ip.startsWith("100.12") || ip === "::1" || ip === "") {
     return { country: null, city: null }
   }
 
@@ -69,7 +92,8 @@ export async function POST(request: NextRequest) {
 
     // Get IP and user agent from headers
     const forwardedFor = request.headers.get("x-forwarded-for")
-    const ipAddress = forwardedFor ? forwardedFor.split(",")[0].trim() : "unknown"
+    const rawIP = forwardedFor ? forwardedFor.split(",")[0].trim() : "unknown"
+    const ipAddress = cleanIP(rawIP)
     const userAgent = request.headers.get("user-agent") || "unknown"
 
     // Lookup geolocation from IP
