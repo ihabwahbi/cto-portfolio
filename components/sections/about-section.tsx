@@ -9,9 +9,9 @@ import { cn } from "@/lib/utils"
 const highlights = [
   {
     icon: Briefcase,
-    title: "Current Focus",
-    value: "Tech Leadership",
-    description: "Digital transformation & team building",
+    title: "Credential",
+    value: "CPEng MIEAust",
+    description: "Chartered Professional Engineer",
   },
   {
     icon: GraduationCap,
@@ -23,7 +23,7 @@ const highlights = [
     icon: MapPin,
     title: "Location",
     value: "Perth → Dubai",
-    description: "Ready to relocate immediately",
+    description: "Available in 30 days",
   },
   {
     icon: Globe,
@@ -79,8 +79,9 @@ export function AboutSection() {
             </p>
             <p className="body-lg text-white/60 leading-relaxed">
               With Iraqi heritage and native Arabic fluency, I understand the Middle
-              East market deeply. I&apos;m not just relocating to Dubai—I&apos;m coming
-              home to a region I know and where I can make an immediate impact.
+              East market deeply. I&apos;m committed to building my long-term career
+              in the UAE, contributing to initiatives like the National AI Strategy
+              2031 while helping businesses leverage technology for competitive advantage.
             </p>
 
             {/* Core values */}

@@ -7,6 +7,7 @@ import {
   BarChart3,
   Code2,
   Compass,
+  Heart,
 } from "lucide-react"
 import { GlassCard } from "@/components/ui"
 import { useAnimateIn } from "@/hooks"
@@ -46,7 +47,14 @@ const principles = [
     title: "Operations Experience",
     description:
       "I've managed P&L, led frontline teams, and navigated crises. I understand that technology serves operations, not the other way around.",
-    color: "cyan",
+    color: "purple",
+  },
+  {
+    icon: Heart,
+    title: "Customer Experience First",
+    description:
+      "Technology should delight customers—faster service, personalized experiences, and seamless interactions that keep them coming back.",
+    color: "emerald",
   },
 ]
 
@@ -82,9 +90,6 @@ export function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={cn(
-                index === 4 && "md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none"
-              )}
             >
               <GlassCard className="h-full group hover:border-white/20 transition-all duration-300">
                 {/* Icon */}
