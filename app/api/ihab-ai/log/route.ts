@@ -1,6 +1,7 @@
 /**
  * AI Chat Logging API Route
  * Logs AI conversations to the database for analytics
+ * Includes IP-based geolocation lookup
  */
 
 import { NextRequest, NextResponse } from "next/server"
@@ -18,15 +19,46 @@ interface LogRequest {
   conversationId: string
   userMessage: string
   aiResponse?: string
-  country?: string
-  city?: string
   referrer?: string
+}
+
+interface GeoData {
+  country: string | null
+  city: string | null
+}
+
+// Lookup geolocation from IP address
+async function getGeoFromIP(ip: string): Promise<GeoData> {
+  // Skip lookup for localhost/private IPs
+  if (ip === "unknown" || ip.startsWith("127.") || ip.startsWith("10.") ||
+      ip.startsWith("192.168.") || ip.startsWith("::1")) {
+    return { country: null, city: null }
+  }
+
+  try {
+    // Using ip-api.com (free for non-commercial, 45 requests/min)
+    const response = await fetch(`http://ip-api.com/json/${ip}?fields=country,city`, {
+      signal: AbortSignal.timeout(2000), // 2 second timeout
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+      return {
+        country: data.country || null,
+        city: data.city || null,
+      }
+    }
+  } catch (error) {
+    console.error("Geo lookup failed:", error)
+  }
+
+  return { country: null, city: null }
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body: LogRequest = await request.json()
-    const { sessionId, conversationId, userMessage, aiResponse, country, city, referrer } = body
+    const { sessionId, conversationId, userMessage, aiResponse, referrer } = body
 
     if (!userMessage || !conversationId) {
       return NextResponse.json(
@@ -40,6 +72,9 @@ export async function POST(request: NextRequest) {
     const ipAddress = forwardedFor ? forwardedFor.split(",")[0].trim() : "unknown"
     const userAgent = request.headers.get("user-agent") || "unknown"
 
+    // Lookup geolocation from IP
+    const { country, city } = await getGeoFromIP(ipAddress)
+
     // Insert into database
     const result = await pool.query(
       `INSERT INTO cto_resume.ai_chat_logs
@@ -51,8 +86,8 @@ export async function POST(request: NextRequest) {
         conversationId,
         userMessage,
         aiResponse || null,
-        country || null,
-        city || null,
+        country,
+        city,
         ipAddress,
         userAgent,
         referrer || null,
@@ -63,6 +98,7 @@ export async function POST(request: NextRequest) {
       {
         success: true,
         id: result.rows[0].id,
+        geo: { country, city },
       },
       { status: 201 }
     )

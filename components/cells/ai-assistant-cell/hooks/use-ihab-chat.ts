@@ -28,6 +28,7 @@ async function logChatToDatabase(data: {
   conversationId: string
   userMessage: string
   aiResponse?: string
+  referrer?: string
 }) {
   try {
     await fetch("/api/ihab-ai/log", {
@@ -38,6 +39,19 @@ async function logChatToDatabase(data: {
   } catch (error) {
     console.error("Failed to log chat:", error)
   }
+}
+
+// Generate a fallback session ID if App Insights hasn't initialized
+function getOrCreateSessionId(): string {
+  const STORAGE_KEY = "ihab_chat_session_id"
+  if (typeof window === "undefined") return ""
+
+  let sessionId = sessionStorage.getItem(STORAGE_KEY)
+  if (!sessionId) {
+    sessionId = `session_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
+    sessionStorage.setItem(STORAGE_KEY, sessionId)
+  }
+  return sessionId
 }
 
 export function useIhabChat(options: UseIhabChatOptions = {}): UseChatReturn {
@@ -94,12 +108,15 @@ export function useIhabChat(options: UseIhabChatOptions = {}): UseChatReturn {
         trackAIChatMessage(conversationId.current, lastUserMessage.current, aiResponse)
 
         // Log to database
-        const { sessionId } = getSessionContext()
+        const { sessionId: appInsightsSessionId } = getSessionContext()
+        // Use App Insights session ID if available, otherwise use fallback
+        const sessionId = appInsightsSessionId || getOrCreateSessionId()
         logChatToDatabase({
           sessionId,
           conversationId: conversationId.current,
           userMessage: lastUserMessage.current,
           aiResponse,
+          referrer: typeof window !== "undefined" ? document.referrer : undefined,
         })
 
         lastUserMessage.current = ""
