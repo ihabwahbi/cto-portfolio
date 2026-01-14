@@ -10,10 +10,11 @@ import {
   ContactSection,
   Footer,
 } from "@/components/sections"
+import { AIAssistantProvider } from "@/contexts/ai-assistant-context"
 
 export default function HomePage() {
   return (
-    <>
+    <AIAssistantProvider>
       {/* Background */}
       <AuroraBackground />
 
@@ -37,6 +38,6 @@ export default function HomePage() {
 
       {/* Footer */}
       <Footer />
-    </>
+    </AIAssistantProvider>
   )
 }
