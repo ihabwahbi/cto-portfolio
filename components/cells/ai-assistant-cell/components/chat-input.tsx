@@ -90,7 +90,8 @@ export const ChatInput = forwardRef<ChatInputHandle, ChatInputProps>(
             rows={1}
             className={cn(
               "flex-1 bg-transparent resize-none",
-              "text-sm text-white placeholder:text-white/40",
+              // Use 16px on mobile to prevent iOS Safari auto-zoom on focus
+              "text-base md:text-sm text-white placeholder:text-white/40",
               "disabled:opacity-50 disabled:cursor-not-allowed",
               "min-h-[24px] max-h-[120px]"
             )}
