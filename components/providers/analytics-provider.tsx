@@ -7,12 +7,19 @@ let appInsights: ApplicationInsights | null = null
 
 type EventProperties = Record<string, string | number | boolean | undefined>
 
+interface SessionContext {
+  sessionId: string | null
+  userId: string | null
+}
+
 interface AnalyticsContextType {
   trackEvent: (name: string, properties?: EventProperties) => void
   trackSectionView: (sectionName: string) => void
   trackClick: (elementName: string, properties?: EventProperties) => void
   trackDownload: (fileName: string) => void
   trackExternalLink: (url: string, linkName: string) => void
+  trackAIChatMessage: (conversationId: string, userMessage: string, aiResponse?: string) => void
+  getSessionContext: () => SessionContext
 }
 
 const AnalyticsContext = createContext<AnalyticsContextType | null>(null)
@@ -27,6 +34,8 @@ export function useAnalytics() {
       trackClick: () => {},
       trackDownload: () => {},
       trackExternalLink: () => {},
+      trackAIChatMessage: () => {},
+      getSessionContext: () => ({ sessionId: null, userId: null }),
     }
   }
   return context
@@ -96,12 +105,40 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
+  const trackAIChatMessage = useCallback((conversationId: string, userMessage: string, aiResponse?: string) => {
+    if (appInsights) {
+      appInsights.trackEvent(
+        { name: "AIChatMessage" },
+        {
+          conversationId,
+          userMessage: userMessage.substring(0, 500), // Truncate for analytics
+          hasResponse: !!aiResponse,
+          responseLength: aiResponse?.length || 0,
+          timestamp: new Date().toISOString(),
+        }
+      )
+    }
+  }, [])
+
+  const getSessionContext = useCallback((): SessionContext => {
+    if (appInsights) {
+      const context = appInsights.context
+      return {
+        sessionId: context?.session?.id || null,
+        userId: context?.user?.id || null,
+      }
+    }
+    return { sessionId: null, userId: null }
+  }, [])
+
   const value: AnalyticsContextType = {
     trackEvent,
     trackSectionView,
     trackClick,
     trackDownload,
     trackExternalLink,
+    trackAIChatMessage,
+    getSessionContext,
   }
 
   return (

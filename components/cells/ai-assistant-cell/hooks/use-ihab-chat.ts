@@ -1,13 +1,15 @@
 /**
  * Custom hook for Ihab's AI Chat
  * Wraps the AI SDK useChat hook with additional functionality
+ * Includes logging to database and analytics
  */
 
 "use client"
 
 import { useChat, type UIMessage } from "@ai-sdk/react"
 import { DefaultChatTransport } from "ai"
-import { useCallback, useMemo } from "react"
+import { useCallback, useMemo, useRef, useEffect } from "react"
+import { useAnalytics } from "@/components/providers"
 import type { UseChatReturn } from "../types"
 
 interface UseIhabChatOptions {
@@ -15,8 +17,37 @@ interface UseIhabChatOptions {
   onMessageSent?: () => void
 }
 
+// Generate a unique conversation ID
+function generateConversationId(): string {
+  return `conv_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
+}
+
+// Log chat to database
+async function logChatToDatabase(data: {
+  sessionId?: string | null
+  conversationId: string
+  userMessage: string
+  aiResponse?: string
+}) {
+  try {
+    await fetch("/api/ihab-ai/log", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+  } catch (error) {
+    console.error("Failed to log chat:", error)
+  }
+}
+
 export function useIhabChat(options: UseIhabChatOptions = {}): UseChatReturn {
   const { onMessageSent } = options
+  const { trackAIChatMessage, getSessionContext, trackEvent } = useAnalytics()
+
+  // Store conversation ID for the session
+  const conversationId = useRef<string>(generateConversationId())
+  const lastUserMessage = useRef<string>("")
+  const hasTrackedOpen = useRef(false)
 
   // Create transport instance
   const transport = useMemo(
@@ -41,9 +72,47 @@ export function useIhabChat(options: UseIhabChatOptions = {}): UseChatReturn {
     },
   })
 
+  // Track when chat is opened (first message)
+  useEffect(() => {
+    if (messages.length > 0 && !hasTrackedOpen.current) {
+      hasTrackedOpen.current = true
+      trackEvent("AIChatOpened", { conversationId: conversationId.current })
+    }
+  }, [messages.length, trackEvent])
+
+  // Track when AI response completes
+  useEffect(() => {
+    if (status === "ready" && messages.length >= 2 && lastUserMessage.current) {
+      const lastMessage = messages[messages.length - 1]
+      if (lastMessage?.role === "assistant") {
+        const aiResponse = lastMessage.parts
+          ?.filter((p): p is { type: "text"; text: string } => p.type === "text")
+          .map((p) => p.text)
+          .join("") || ""
+
+        // Log to analytics
+        trackAIChatMessage(conversationId.current, lastUserMessage.current, aiResponse)
+
+        // Log to database
+        const { sessionId } = getSessionContext()
+        logChatToDatabase({
+          sessionId,
+          conversationId: conversationId.current,
+          userMessage: lastUserMessage.current,
+          aiResponse,
+        })
+
+        lastUserMessage.current = ""
+      }
+    }
+  }, [status, messages, trackAIChatMessage, getSessionContext])
+
   const send = useCallback(
     async (message: string) => {
       if (!message.trim()) return
+
+      // Store the message for logging when response completes
+      lastUserMessage.current = message
 
       await sendMessage({
         parts: [{ type: "text", text: message }],
@@ -60,6 +129,9 @@ export function useIhabChat(options: UseIhabChatOptions = {}): UseChatReturn {
 
   const clear = useCallback(() => {
     setMessages([])
+    // Reset for new conversation
+    conversationId.current = generateConversationId()
+    hasTrackedOpen.current = false
   }, [setMessages])
 
   // Extract text content from UIMessage parts
