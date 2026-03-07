@@ -51,3 +51,6 @@ test-results/
 # Temporary files
 *.tmp
 *.temp
+
+# Thoughts (local developer notes - never commit)
+thoughts/
